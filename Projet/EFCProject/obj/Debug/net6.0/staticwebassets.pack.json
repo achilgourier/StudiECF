@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\Asset\\Images\\LogoFrenchGame.png"
     },
     {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",
+      "PackagePath": "staticwebassets\\Asset\\Images\\image-backGround.png"
+    },
+    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

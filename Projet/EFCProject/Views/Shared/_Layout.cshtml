@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,41 +16,50 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
-            <div class="container-fluid mx-5">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow ">
+            <div class="container-fluid mx-2 container mx-auto ">
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Asset/Images/LogoFrenchGame.png" alt="logo" width="180" height="180" class="logo" /></a>
+                <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="logo" src="~/Asset/Images/LogoFrenchGame.png" width="90" height="90" />
+                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav my-3 py-3 mx-3">
+                    <ul class="navbar-nav my-3 py-3 mx-2">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" style="color : #038C3E" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="GameList">Liste des Jeux</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
+                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="Index">Admin Page</a>
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Admin Page</a>
                             </li>
+                        }
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesInTab">Admifezfzn Page</a>
+                        </li>
                         }
 
                     </ul>
+
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
     <div class="">
-        <main role="main" class="pb-3">
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>

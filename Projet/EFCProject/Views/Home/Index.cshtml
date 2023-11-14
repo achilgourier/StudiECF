@@ -1,27 +1,51 @@
-﻿@{
+﻿@model IEnumerable<EFCProject.Models.Game>
+
+@{
     ViewData["Title"] = "Home Page";
 }
-@model IEnumerable<EFCProject.Models.ImageModel>
-
-<div class="container-fluid d-flex align-items-center">
-	<img class="mx-auto my-auto img-fluid" src="https://picsum.photos/1920/300" />
-</div>
 
 
-<div class="container container-fluid">
-	<div class="row">
-		<div class="col-12">
-			<h1 class="text-center">Bienvenue sur FrenchGame</h1>
+<div class="mt-3">
+	<div class="container-fluid body-backGround align-items-center p-5">
+		<div class="row p-5 ">
+			<div class="col-12 p-5">
+				<h1 class="mx-auto text-center">Bienvenue sur FrenchGame</h1>
+			</div>
+		</div>
+		<div class="row p-5" >
+			<div class="col-12 p-5">
+				<p class="text-center">FrenchGame est une plateforme de financement participatif de jeux vidéo. Vous pouvez y trouver des projets de jeux vidéo en cours de développement et y participer en finançant le projet de votre choix.</p>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-12">
-			<p class="text-center">FrenchGame est une plateforme de financement participatif de jeux vidéo. Vous pouvez y trouver des projets de jeux vidéo en cours de développement et y participer en finançant le projet de votre choix.</p>
+	<div class="container actualite  mt-3">
+		<div class="row p-5" >
+			<div class="col-12 p-5">
+				<p class="text-center">ACTUalité</p>
+			</div>
 		</div>
 	</div>
+	<div class="container actualite  mt-3">
+		<div class="row p-5">
+			<div class="col-12 p-5">
+				<p class="text-center">List Jeu</p>
+				
+				<div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                        </tr>
+                    }
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </div>
-
-
-
-
 

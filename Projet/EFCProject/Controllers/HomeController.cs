@@ -1,6 +1,8 @@
-﻿using EFCProject.Models;
+﻿using EFCProject.Data;
+using EFCProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace EFCProject.Controllers
@@ -9,19 +11,23 @@ namespace EFCProject.Controllers
     
     public class HomeController : Controller
     {
+		private readonly ApplicationDbContext _context;
+		private readonly ILogger<HomeController> _logger;
 
-        private readonly IWebHostEnvironment _hostingEnvironment;
-        
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger , IWebHostEnvironment hostingEnvironment)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _hostingEnvironment = hostingEnvironment;
-        }
+			_context = context;
 
-        public IActionResult Index()
+		}
+
+
+        public async Task<IActionResult> Index()
         {
+            return _context.Game != null ?
+                          View(await _context.Game.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+            /*
             string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "Asset/Images/CarouselImage");
             string folderPathFromRoot = "~/Asset/Images/CarouselImage";
             // Vérifie si le dossier existe
@@ -48,7 +54,9 @@ namespace EFCProject.Controllers
             else
             {
                 return Problem("Le dossier", folderPath);
-            }
+            }*/
+
+
         }
 
         

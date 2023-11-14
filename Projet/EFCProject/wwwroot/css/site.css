@@ -29,40 +29,68 @@
 }
 
 html {
-    font-family:'HyperSuper';
-    font-size: 50px;
+    font-family: 'HyperSuper';
+    font-size: 30px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+}
+footer {
+    background-color: #034159;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
-}
-.carousel {
-    background: #2f4357;
 
-    
+    position: relative;
+    min-height: 100%;
 }
+
 .logo {
-    max-height: 180px;
-    max-width: 180px;
+    max-height: 90px;
+    max-width: 90px;
     border-radius: 100%;
     border: 4px solid #02735E;
 }
+
 .navbar {
+
     background-color: #034159;
     font-size: 30px;
+    
 }
-.navbar-nav {
-    background-color: #02735E;
+
+
+.nav-link {
+    color: white;
 }
+
 body {
+
     background-color: #025951;
     font-family: 'HyperSuper';
-    margin-bottom: 60px;
+
+    background-color: #025951;
+
+}
+
+.body-backGround {
+    background-image: url('../asset/images/image-background.png');
+    background-position: center;
+    background-size: cover;
+    
+}
+h1 {
+    font-size: 60px;
+    color: #038C3E;
+}
+p {
+    font-size: 30px;
+    color: #038C3E;
+}
+
+.actualite {
+    background-color: #038C3E;
 }

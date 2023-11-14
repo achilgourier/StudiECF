@@ -8,16 +8,21 @@ using Microsoft.EntityFrameworkCore;
 using EFCProject.Data;
 using EFCProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using static System.Formats.Asn1.AsnWriter;
+using System.Reflection;
+using System.Collections;
+using Microsoft.Extensions.Logging;
 
 namespace EFCProject.Controllers
 {
     public class GamesController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public GamesController(ApplicationDbContext context)
+        private readonly ILogger<GamesController> _logger;
+        public GamesController(ApplicationDbContext context, ILogger<GamesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Games
@@ -35,11 +40,41 @@ namespace EFCProject.Controllers
                           Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
         //POST : Games/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchTitle)
+        public async Task<IActionResult> ShowSearchResults(String SearchTitle,  String SearchSupport)
         {
 
-            return View("ShowSearchForm", await _context.Game.Where(j => j.Title.Contains(SearchTitle)).ToListAsync());
+            return View("ShowSearchForm", await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
         }
+
+		public async Task<IActionResult> DisplayGamesInTab()
+		{
+			return _context.Game != null ?
+						  View(await _context.Game.ToListAsync()) :
+						  Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+		}
+        public async Task<IActionResult> DisplayGamesSorted(string sortBy)
+        {
+ 
+            // Obtenez le type de l'objet Game
+            Type type = typeof(Game);
+
+            // Obtenez les propriétés de l'objet Game
+            PropertyInfo[] properties = type.GetProperties();
+           
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.Name == sortBy)
+                {
+                    
+                    List<Game> tabGame = await _context.Game.ToListAsync();
+                    List<Game> SortedList = tabGame.OrderBy(o => property.GetValue(o, null)).ToList();
+
+                    return View("ShowSearchForm", SortedList);
+                }      
+            }
+            return View("ShowSearchForm", await _context.Game.ToListAsync());
+        }
+
 
 
 
@@ -182,5 +217,9 @@ namespace EFCProject.Controllers
         {
           return (_context.Game?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+
+        
     }
 }
