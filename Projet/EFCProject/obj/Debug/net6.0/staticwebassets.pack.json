@@ -5,6 +5,34 @@
       "PackagePath": "staticwebassets\\EFCProject.bundle.scp.css"
     },
     {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Font\\HyperSuperItalic.ttf",
+      "PackagePath": "staticwebassets\\Asset\\Font\\HyperSuperItalic.ttf"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Font\\HyperSuperItalic3D.ttf",
+      "PackagePath": "staticwebassets\\Asset\\Font\\HyperSuperItalic3D.ttf"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Font\\HyperSuperRegular.ttf",
+      "PackagePath": "staticwebassets\\Asset\\Font\\HyperSuperRegular.ttf"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Font\\HyperSuperRegular3D.ttf",
+      "PackagePath": "staticwebassets\\Asset\\Font\\HyperSuperRegular3D.ttf"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\CarouselImage\\LogoFrenchGame.png",
+      "PackagePath": "staticwebassets\\Asset\\Images\\CarouselImage\\LogoFrenchGame.png"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\CarouselImage\\leVole.png",
+      "PackagePath": "staticwebassets\\Asset\\Images\\CarouselImage\\leVole.png"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\LogoFrenchGame.png",
+      "PackagePath": "staticwebassets\\Asset\\Images\\LogoFrenchGame.png"
+    },
+    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,5 +1,36 @@
+/***** Fonts amaranth *****/
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperRegular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperRegular3D.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperItalic3D.ttf') format('ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperItalic.ttf') format('ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
 html {
-  font-size: 14px;
+    font-family:'HyperSuper';
+    font-size: 50px;
 }
 
 @media (min-width: 768px) {
@@ -12,7 +43,26 @@ html {
   position: relative;
   min-height: 100%;
 }
+.carousel {
+    background: #2f4357;
 
+    
+}
+.logo {
+    max-height: 180px;
+    max-width: 180px;
+    border-radius: 100%;
+    border: 4px solid #02735E;
+}
+.navbar {
+    background-color: #034159;
+    font-size: 30px;
+}
+.navbar-nav {
+    background-color: #02735E;
+}
 body {
-  margin-bottom: 60px;
+    background-color: #025951;
+    font-family: 'HyperSuper';
+    margin-bottom: 60px;
 }
