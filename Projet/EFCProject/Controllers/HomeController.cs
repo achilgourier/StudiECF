@@ -24,6 +24,7 @@ namespace EFCProject.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             return _context.Game != null ?
                           View(await _context.Game.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Game'  is null.");
@@ -59,7 +60,7 @@ namespace EFCProject.Controllers
 
         }
 
-        
+
         [Authorize(Roles = "Admin")]
         public IActionResult Privacy()
         {

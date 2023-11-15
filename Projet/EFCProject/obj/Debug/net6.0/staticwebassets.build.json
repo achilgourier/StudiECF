@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PWczXA6h2VjIxUv0Np2XsTY6UXl8OW9vWmFFLM/FGsE=",
+  "Hash": "yUxgvHxacPfiSVQi+DWYadWjZbeT9BjDyifjWj7u8MA=",
   "Source": "EFCProject",
   "BasePath": "_content/EFCProject",
   "Mode": "Default",
@@ -1171,6 +1171,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\CarouselImage\\LogoFrenchGame.png"
+    },
+    {
+      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\image1.png",
+      "SourceId": "EFCProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
+      "BasePath": "_content/EFCProject",
+      "RelativePath": "Asset/Images/Games/image1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\image1.png"
     },
     {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",

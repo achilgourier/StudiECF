@@ -20,7 +20,7 @@ namespace EFCProject.Models
         public float Budget { get; set; }
         public string? Statut { get; set; }
         public string? Type { get; set; }
-
+        public string? Image { get; set; }
 
         public Game()
         {

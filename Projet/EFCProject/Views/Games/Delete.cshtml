@@ -10,6 +10,12 @@
 <div>
     <h4>Game</h4>
     <hr />
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
@@ -83,11 +89,10 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Type)
         </dd>
+        <dd class="col-sm-10">
+            <img src="~/Asset/Images/Games/@Html.DisplayFor(model => model.Image)" alt="ImageJeu" />
+        </dd>
     </dl>
     
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+   
 </div>

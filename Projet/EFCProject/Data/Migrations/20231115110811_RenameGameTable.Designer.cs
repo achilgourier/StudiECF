@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231114112513_initialsetup")]
-    partial class initialsetup
+    [Migration("20231115110811_RenameGameTable")]
+    partial class RenameGameTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,8 +44,11 @@ namespace EFCProject.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Engine")
-                        .HasColumnType("int");
+                    b.Property<string>("Engine")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Score")
                         .HasColumnType("int");
@@ -53,20 +56,20 @@ namespace EFCProject.Data.Migrations
                     b.Property<float>("Size")
                         .HasColumnType("real");
 
-                    b.Property<int>("Statut")
-                        .HasColumnType("int");
+                    b.Property<string>("Statut")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Studio")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Support")
-                        .HasColumnType("int");
+                    b.Property<string>("Support")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

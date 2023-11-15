@@ -10,8 +10,12 @@ using EFCProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using static System.Formats.Asn1.AsnWriter;
 using System.Reflection;
+using System.IO;
 using System.Collections;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EFCProject.Controllers
 {
@@ -19,18 +23,22 @@ namespace EFCProject.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<GamesController> _logger;
-        public GamesController(ApplicationDbContext context, ILogger<GamesController> logger)
+        private readonly IWebHostEnvironment _environment;
+
+
+        public GamesController(ApplicationDbContext context, ILogger<GamesController> logger, IWebHostEnvironment environment)
         {
             _context = context;
             _logger = logger;
+            _environment = environment;
         }
 
         // GET: Games
         public async Task<IActionResult> Index()
         {
-              return _context.Game != null ? 
-                          View(await _context.Game.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+            return _context.Game != null ?
+                        View(await _context.Game.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Game'  is nulaaaaaaaaaaaaaaaaaaaaaal.");
         }
         // GET: Games/ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
@@ -40,37 +48,37 @@ namespace EFCProject.Controllers
                           Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
         //POST : Games/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchTitle,  String SearchSupport)
+        public async Task<IActionResult> ShowSearchResults(String SearchTitle, String SearchSupport)
         {
 
             return View("ShowSearchForm", await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
         }
 
-		public async Task<IActionResult> DisplayGamesInTab()
-		{
-			return _context.Game != null ?
-						  View(await _context.Game.ToListAsync()) :
-						  Problem("Entity set 'ApplicationDbContext.Game'  is null.");
-		}
+        public async Task<IActionResult> DisplayGamesInTab()
+        {
+            return _context.Game != null ?
+                          View(await _context.Game.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+        }
         public async Task<IActionResult> DisplayGamesSorted(string sortBy)
         {
- 
+
             // Obtenez le type de l'objet Game
             Type type = typeof(Game);
 
             // Obtenez les propriétés de l'objet Game
             PropertyInfo[] properties = type.GetProperties();
-           
+
             foreach (PropertyInfo property in properties)
             {
                 if (property.Name == sortBy)
                 {
-                    
+
                     List<Game> tabGame = await _context.Game.ToListAsync();
                     List<Game> SortedList = tabGame.OrderBy(o => property.GetValue(o, null)).ToList();
 
                     return View("ShowSearchForm", SortedList);
-                }      
+                }
             }
             return View("ShowSearchForm", await _context.Game.ToListAsync());
         }
@@ -108,16 +116,32 @@ namespace EFCProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        [RequestFormLimits(MultipartBodyLengthLimit = 209715200)]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
         {
             if (ModelState.IsValid)
             {
-               
+                if (postedFile != null)
+                {
+                    string path = _environment.WebRootPath + "/Asset/Images/Games/";
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    string fileName = postedFile.FileName;
+                    using (var stream = new System.IO.FileStream(path + fileName, System.IO.FileMode.Create))
+                    {
+                        await postedFile.CopyToAsync(stream);
+                    }
+                    game.Image = fileName;
+                }
+                
                 _context.Add(game);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(game);
         }
 
@@ -144,7 +168,7 @@ namespace EFCProject.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game)
         {
             if (id != game.Id)
             {
@@ -206,20 +230,31 @@ namespace EFCProject.Controllers
             var game = await _context.Game.FindAsync(id);
             if (game != null)
             {
+                if (game.Image != null) {
+                    string path = _environment.WebRootPath + "/Asset/Images/Games/";
+                    string filePath = path + game.Image;
+                    // Vérifie si le fichier existe avant de le supprimer
+                        if (System.IO.File.Exists(filePath))
+                        {
+                        // Supprime le fichier
+                            System.IO.File.Delete(filePath);
+                            Console.WriteLine("Le fichier a été supprimé avec succès.");
+                        }
+                }
                 _context.Game.Remove(game);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GameExists(int id)
         {
-          return (_context.Game?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Game?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
 
 
-        
+
     }
 }
