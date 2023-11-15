@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Protocol.Plugins;
 
 namespace EFCProject.Controllers
 {
@@ -41,17 +42,24 @@ namespace EFCProject.Controllers
                         Problem("Entity set 'ApplicationDbContext.Game'  is nulaaaaaaaaaaaaaaaaaaaaaal.");
         }
         // GET: Games/ShowSearchForm
-        public async Task<IActionResult> ShowSearchForm()
-        {
+        public async Task<IActionResult> ShowSearchForm(string origine)
+        {   
+           
+            
             return _context.Game != null ?
-                          View(await _context.Game.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+                                View(await _context.Game.ToListAsync()) :
+                                Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
         //POST : Games/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchTitle, String SearchSupport)
+        public async Task<IActionResult> ShowSearchResults(string SearchTitle, string SearchSupport,string origine)
         {
+            if (origine != null)
+                return View(origine, await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
+
+
 
             return View("ShowSearchForm", await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
+
         }
 
         public async Task<IActionResult> DisplayGamesInTab()
@@ -60,10 +68,15 @@ namespace EFCProject.Controllers
                           View(await _context.Game.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
-        public async Task<IActionResult> DisplayGamesSorted(string sortBy)
-        {
 
-            // Obtenez le type de l'objet Game
+
+        public async Task<IActionResult> DisplayGamesSorted(string sortBy, string origine)
+        {
+            
+            if(origine == null)
+            {
+                origine = "ShowSearchForm";
+            }
             Type type = typeof(Game);
 
             // Obtenez les propriétés de l'objet Game
@@ -77,10 +90,11 @@ namespace EFCProject.Controllers
                     List<Game> tabGame = await _context.Game.ToListAsync();
                     List<Game> SortedList = tabGame.OrderBy(o => property.GetValue(o, null)).ToList();
 
-                    return View("ShowSearchForm", SortedList);
+                    return View(origine, SortedList);
+  
                 }
             }
-            return View("ShowSearchForm", await _context.Game.ToListAsync());
+            return View(origine, await _context.Game.ToListAsync());
         }
 
 
@@ -168,7 +182,7 @@ namespace EFCProject.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
         {
             if (id != game.Id)
             {
@@ -179,6 +193,27 @@ namespace EFCProject.Controllers
             {
                 try
                 {
+                    if (postedFile != null)
+                    {
+                        string path = _environment.WebRootPath + "/Asset/Images/Games/";
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+                        string imagePath = path + game.Image;
+                        // Vérifie si le fichier existe avant de le supprimer
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            // Supprime le fichier
+                            System.IO.File.Delete(imagePath);
+                        }
+                        using (var stream = new System.IO.FileStream(path + postedFile.Name, System.IO.FileMode.Create))
+                        {
+                            await postedFile.CopyToAsync(stream);
+                        }
+                        game.Image = postedFile.FileName;
+                    }
+
                     _context.Update(game);
                     await _context.SaveChangesAsync();
                 }
@@ -195,7 +230,7 @@ namespace EFCProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View("test");
         }
 
         // GET: Games/Delete/5

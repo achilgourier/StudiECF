@@ -3,87 +3,130 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<div class="col-md-6 offset-md-3 align-content-center contente ">
 <h1>Edit</h1>
-
 <h4>Game</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <div class="">
+            <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Studio" class="control-label"></label>
-                <input asp-for="Studio" class="form-control" />
-                <span asp-validation-for="Studio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Support" class="control-label"></label>
-                <select asp-for="Support" class="form-control"></select>
-                <span asp-validation-for="Support" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" />
-                <span asp-validation-for="Size" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Score" class="control-label"></label>
-                <input asp-for="Score" class="form-control" />
-                <span asp-validation-for="Score" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Engine" class="control-label"></label>
-                <select asp-for="Engine" class="form-control"></select>
-                <span asp-validation-for="Engine" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreateDate" class="control-label"></label>
-                <input asp-for="CreateDate" class="form-control" />
-                <span asp-validation-for="CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Budget" class="control-label"></label>
-                <input asp-for="Budget" class="form-control" />
-                <span asp-validation-for="Budget" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Statut" class="control-label"></label>
-                <select asp-for="Statut" class="form-control"></select>
-                <span asp-validation-for="Statut" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control"></select>
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Studio" class="control-label"></label>
+                    <input asp-for="Studio" list="StudioList" id="Studio" name="Studio" class="form-control" />
+                    <datalist id="StudioList">
+                        <option value="Studio1"></option>
+                        <option value="Studio2"></option>
+                        <option value="Studio3"></option>
+                        <option value="Studio4"></option>
+                        <option value="Studio5"></option>
+                    </datalist>
+                    <span asp-validation-for="Studio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Support" class="control-label"></label>
+                    <input asp-for="Support" list="SupportList" id="Support" name="Support" class="form-control" />
+                    <datalist id="SupportList">
+                        <option value="PC"></option>
+                        <option value="XBoit"></option>
+                        <option value="StationDeJeu"></option>
+                        <option value="Nitendo Changement"></option>
+                    </datalist>
+                    <span asp-validation-for="Support" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label"></label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Score" class="control-label"></label>
+                    <input asp-for="Score" class="form-control" />
+                    <span asp-validation-for="Score" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Engine" class="control-label"></label>
+                    <input asp-for="Engine" list="EngineList" id="Engine" name="Engine" class="form-control" />
+                    <datalist id="EngineList">
+                        <option value="Unity"></option>
+                        <option value="Unreal"></option>
+                        <option value="Godo"></option>
+                        <option value="Scratch"></option>
+                    </datalist>
+                    <span asp-validation-for="Engine" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreateDate" class="control-label"></label>
+                    <input asp-for="CreateDate" class="form-control" />
+                    <span asp-validation-for="CreateDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Budget" class="control-label"></label>
+                    <input asp-for="Budget" class="form-control" />
+                    <span asp-validation-for="Budget" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Statut" class="control-label"></label>
+                    <input asp-for="Statut" list="StatutList" id="Statut" name="Statut" class="form-control" />
+                    <datalist id="StatutList">
+                        <option value="Prevu"></option>
+                        <option value="A Determiner"></option>
+                        <option value="En Cous"></option>
+                        <option value="Fini"></option>
+                    </datalist>
+                    <span asp-validation-for="Statut" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <input asp-for="Type" list="TypeList" id="Type" name="Type" class="form-control" />
+                    <datalist id="TypeList">
+                        <option value="RPG"></option>
+                        <option value="MMO"></option>
+                        <option value="MOBA"></option>
+                        <option value="Combat Royal"></option>
+                    </datalist>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input type="file" name="postedFile" class="form-control" />
+                    <label name="postedFile" class="control-label"></label>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

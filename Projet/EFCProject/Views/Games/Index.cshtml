@@ -3,54 +3,72 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
+<div class="col-md-10 offset-md-1 align-content-center contente ">
+    
+<h1>Liste des Jeux</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ShowSearchResults" asp-route-origine="Index">
+                <div class="form-group">
+                    <label for="SearchTitle"  class="control-label">Cherche Titre</label>
+                    <input name="SearchTitle" class="form-control" />
+                </div>
+            </form>
+        </div>
+    </div>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Studio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Support)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Score)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Engine)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Budget)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Statut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+        <thead>
+            <tr>
+                <th>
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index"  asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
+                </th>
+                <th>
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Description)">  @Html.DisplayNameFor(model => model.Description)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Studio)"> @Html.DisplayNameFor(model => model.Studio)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Support)"> @Html.DisplayNameFor(model => model.Support)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Size)"> @Html.DisplayNameFor(model => model.Size)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Score)"> @Html.DisplayNameFor(model => model.Score)</a>
+                </th>
+                <th>
+
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Engine)"> @Html.DisplayNameFor(model => model.Engine)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.CreateDate)"> @Html.DisplayNameFor(model => model.CreateDate)</a>
+                </th>
+                <th>
+
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.EndDate)"> @Html.DisplayNameFor(model => model.EndDate)</a>
+                </th>
+                <th>
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Statut)"> @Html.DisplayNameFor(model => model.Statut)</a>
+
+                </th>
+                <th>
+                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy=" @Html.DisplayNameFor(model => model.Type)">  @Html.DisplayNameFor(model => model.Type)</a>
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -99,3 +117,9 @@
 }
     </tbody>
 </table>
+</div>
+
+
+
+
+

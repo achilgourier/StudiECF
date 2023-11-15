@@ -40,6 +40,7 @@ html {
 }
 footer {
     background-color: #034159;
+   
 }
 
 html {
@@ -73,6 +74,7 @@ body {
     font-family: 'HyperSuper';
 
     background-color: #025951;
+    color: black;
 
 }
 
@@ -84,13 +86,14 @@ body {
 }
 h1 {
     font-size: 60px;
-    color: #038C3E;
+    color: black;
 }
 p {
     font-size: 30px;
-    color: #038C3E;
+    color: black;
 }
 
-.actualite {
+.contente {
+    padding: 50px;
     background-color: #038C3E;
 }
