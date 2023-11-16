@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using EFCProject.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace EFCProject.Data
 {
@@ -11,5 +12,10 @@ namespace EFCProject.Data
         {
         }
         public DbSet<EFCProject.Models.Game>? Game { get; set; }
+        public DbSet<EFCProject.Models.Favorit>? Favorit { get; set; }
+        
+      
     }
 }
+
+

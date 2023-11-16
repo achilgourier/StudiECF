@@ -50,6 +50,7 @@ using (var scope = app.Services.CreateScope())
 
     foreach (var role in roles)
     {
+
         if(!await roleManager.RoleExistsAsync(role))
             await roleManager.CreateAsync(new IdentityRole(role));
     }
@@ -63,6 +64,7 @@ using (var scope = app.Services.CreateScope())
     string password = "Admin123!";
     if (await userManager.FindByEmailAsync(email) == null)
     {
+        
         var user = new IdentityUser();
         user.UserName = email;
         user.Email = email;

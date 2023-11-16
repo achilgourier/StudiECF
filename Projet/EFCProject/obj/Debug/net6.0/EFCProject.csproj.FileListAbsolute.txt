@@ -256,3 +256,5 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Debug\ne
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Debug\net6.0\EFCProject.Properties.Resources.resources
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Debug\net6.0\EFCProject.csproj.GenerateResource.cache

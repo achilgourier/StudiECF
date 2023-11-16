@@ -96,4 +96,42 @@ p {
 .contente {
     padding: 50px;
     background-color: #038C3E;
+    border-radius: 10px;
+    
 }
+
+
+/* Style pour la grille */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    
+}
+.image-grid h2 {
+    font-size: 25px;
+}
+.image-grid p {
+    font-size: 20px;
+
+}
+.image-grid-item:hover {
+    transform: scale(1.1); /* Lorsqu'on survole l'élément, augmentez l'échelle à 110% */
+}
+
+/* Style pour chaque élément de la grille (image) */
+.image-grid-item {
+
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+}
+
+    /* Style pour chaque image */
+.image-grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+    }

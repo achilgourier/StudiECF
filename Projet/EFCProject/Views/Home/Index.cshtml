@@ -18,34 +18,31 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="container contente  mt-3">
-		<div class="row p-5" >
+		<div class="row p-5">
 			<div class="col-12 p-5">
 				<p class="text-center">ACTUalité</p>
 			</div>
 		</div>
 	</div>
+	
 	<div class="container contente  mt-3">
 		<div class="row p-5">
 			<div class="col-12 p-5">
 				<p class="text-center">List Jeu</p>
 				
 				<div>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                        </tr>
-                    }
+					@Html.Partial("_GameInTab", Model)
+
+
 				</div>
 			</div>
 		</div>
 	</div>
 	
 </div>
+
+
+
 

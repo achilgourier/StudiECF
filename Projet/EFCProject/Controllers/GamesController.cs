@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NuGet.Protocol.Plugins;
+using System.Globalization;
+using System.Linq.Expressions;
+using System.Security.Permissions;
+using System.Security.Claims;
 
 namespace EFCProject.Controllers
 {
@@ -35,6 +39,7 @@ namespace EFCProject.Controllers
         }
 
         // GET: Games
+        
         public async Task<IActionResult> Index()
         {
             return _context.Game != null ?
@@ -51,16 +56,89 @@ namespace EFCProject.Controllers
                                 Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
         //POST : Games/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(string SearchTitle, string SearchSupport,string origine)
+        public async Task<IActionResult> ShowSearchResults(string SearchInput, string origine)
         {
-            if (origine != null)
-                return View(origine, await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
+            if (origine == null)
+            {
+                origine = "ShowSearchForm";
+            }
+
+            Type type = typeof(Game);
+
+            // Obtenez les propriétés de l'objet Game
+            PropertyInfo[] properties = type.GetProperties();
+            List<Game> tabGame = await _context.Game.ToListAsync();
+            List<Game> vide = new List<Game>();
+            foreach (Game game in tabGame)
+            {
+                foreach (PropertyInfo property in properties)
+                {
+                    Type propertyType = property.PropertyType;
+                    if (propertyType == typeof(string))
+                    {
+                        string propertyValue = (string)property.GetValue(game);
+                        if (propertyValue!= null && propertyValue.Contains(SearchInput))
+                        {
+                            vide.Add(game);
+                        }
+
+                    }
+                }
+            }
+            return View(origine, vide);
+        }
 
 
 
-            return View("ShowSearchForm", await _context.Game.Where(j => j.Title.Contains(SearchTitle) || j.Support.Contains(SearchSupport)).ToListAsync());
+        public async Task<IActionResult> Displayfav()
+        {
+
+
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                
+
+                // Effectuer une jointure entre les tables User et FavoriteGame
+                var query = from game in _context.Game
+                            join favorite in _context.Favorit on game.Id equals favorite.GameId
+                            where favorite.UserId == userIdClaim.Value
+                            select game;
+
+                // Exécutez la requête et récupérez les résultats
+                var favoriteGames = query.ToList();
+
+                return favoriteGames != null ?
+                    View("Displayfav", favoriteGames) :
+                    Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+            }
+
+            return View("../Account/Register");
+
 
         }
+
+        
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddFav(int gameId, int userID ,string origin)
+        {
+            // Récupérez le jeu à partir de la base de données
+            var game = _context.Game.Find(gameId);
+
+            
+            // Incrémentez le Score
+             game.Score++;
+
+            // Enregistrez les modifications dans la base de données
+            _context.SaveChanges();
+
+            // Vous pouvez renvoyer quelque chose en réponse si nécessaire
+            return Json(new { success = true, newScore = game.Score });
+        }
+
 
         public async Task<IActionResult> DisplayGamesInTab()
         {
@@ -103,6 +181,7 @@ namespace EFCProject.Controllers
         // GET: Games/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+                        
             if (id == null || _context.Game == null)
             {
                 return NotFound();
@@ -115,7 +194,32 @@ namespace EFCProject.Controllers
                 return NotFound();
             }
 
-            return View(game);
+            int isFavorite = 0;
+            // Obtenez l'ID de l'utilisateur actuel (assurez-vous que votre application gère correctement l'authentification)
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                if(userIdClaim != null)
+                {
+                    // Vérifiez si le jeu est déjà en favori pour cet utilisateur
+                    if(_context.Favorit.Any(f => f.UserId == userIdClaim.Value && f.GameId == id))
+                    {
+                       isFavorite = 1;
+
+					}
+
+				}
+                
+            }
+            var viewModel = new GameViewModel
+            {
+                Game = game,
+                IsInFavorites = isFavorite
+            };
+
+            return View(viewModel);
         }
 
         [Authorize(Roles = "Admin")]

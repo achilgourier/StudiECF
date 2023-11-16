@@ -4,123 +4,105 @@
 @{
     ViewData["Title"] = "ShowSearchForm";
 }
-<div class="col-md-10 offset-md-1 align-content-center contente ">
-<h1>ShowSearchForm</h1>
+<div class="col-md-10 offset-md-1 align-content-center contente mt-3 ">
+<h1>Liste des Jeux</h1>
+<br/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ShowSearchResults" class="row">
+                <div class="form-group col-md-6">
 
-<h4>SearchGame</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ShowSearchResults">
-            <div class="form-group">
-                <label for="SearchTitle" class="control-label"></label>
-                <input name="SearchTitle" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="SearchSupport" class="control-label"></label>
-                <input name="SearchSupport" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Search" class="btn btn-primary" />
-            </div>
-        </form>
+                    <label for="SearchInput" class="control-label">Chercher Titre</label>
+                    <input name="SearchInput" class="form-control" id="searchInput" oninput="handleInput(this.value)" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="SearchInput" class="control-label">Chercher Support ,Status ou Style</label>
+                    <input name="SearchInput" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="SearchInput" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
+    <div class="row">
+        <div class="form-group col-md-1">
+            <p>Trie par :</p>
+        </div>
+        <div class="form-group col-md-1">
+            <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
+        </div>
+        <div class="form-group col-md-1">
+            <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Description)">  @Html.DisplayNameFor(model => model.Description)</a>
+        </div>
+        <div class="form-group col-md-1">
+            <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Score)"> @Html.DisplayNameFor(model => model.Score)</a>
+        </div>
+    </div>
+    
+</div>
+<hr />
+
+<div class="image-grid contente col-md-10 offset-md-1 mt-3">
+    @foreach (var item in Model)
+    {
+            <div class="dataRow">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <p>@Html.DisplayFor(modelItem => item.Score)</p>
+                    </div>
+                </div>
+
+                   
+                        
+
+                <div class="image-grid-item">
+                    <a href="@Url.Action("Details", "Games", new { id = item.Id })">
+                        <img src="~/Asset/Images/Games/@item.Image" alt="@item.Image" />
+                    </a>
+                            
+                </div>
+                   
+                        
+                            
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                            
+                                
+                            
+            </div>  
+                
+    }
 </div>
 
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
-               
-            </th>
-            <th>
-               
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Description)">  @Html.DisplayNameFor(model => model.Description)</a>
-            </th>
-            <th>
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Studio)"> @Html.DisplayNameFor(model => model.Studio)</a>
-            </th>
-            <th>
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Support)"> @Html.DisplayNameFor(model => model.Support)</a>
-            </th>
-            <th>
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Size)"> @Html.DisplayNameFor(model => model.Size)</a>
-            </th>
-            <th>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Score)"> @Html.DisplayNameFor(model => model.Score)</a>
-            </th>
-            <th>
-                
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Engine)"> @Html.DisplayNameFor(model => model.Engine)</a>
-            </th>
-            <th>
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.CreateDate)"> @Html.DisplayNameFor(model => model.CreateDate)</a>
-            </th>
-            <th>
-                
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.EndDate)"> @Html.DisplayNameFor(model => model.EndDate)</a>
-            </th>
-            <th>
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Statut)"> @Html.DisplayNameFor(model => model.Statut)</a>
-                
-            </th>
-            <th>
-                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy=" @Html.DisplayNameFor(model => model.Type)">  @Html.DisplayNameFor(model => model.Type)</a>
-               
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Studio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Support)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Size)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Score)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Engine)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
+<script>
+    $(document).ready(function () {
+        // Attacher un gestionnaire d'événement à l'entrée de recherche
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Statut)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        $("#searchInput").on("input", function () {
+            // Obtenir la valeur du champ de recherche
+            var searchText = $(this).val().toLowerCase();
 
-</div>
+            // Vérifier si la longueur de la chaîne est supérieure à 3
+            if (searchText.length > 3) {
+                // Masquer toutes les lignes du tableau
+                $(".dataRow").hide();
+
+                // Afficher uniquement les lignes qui correspondent à la recherche
+                $(".dataRow").filter(function () {
+                    return $(this).text().toLowerCase().includes(searchText);
+                }).show();
+            } else {
+                // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
+                $(".dataRow").show();
+            }
+        });
+    });
+
+</script>

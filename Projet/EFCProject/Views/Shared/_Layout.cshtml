@@ -36,17 +36,18 @@
                         <li class="nav-item">
                             <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favorit</a>
+                        </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Admin Page</a>
                             </li>
                         }
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="DisplayGamesInTab">Admifezfzn Page</a>
-                        </li>
-                        }
+
+                        
+
 
                     </ul>
 
