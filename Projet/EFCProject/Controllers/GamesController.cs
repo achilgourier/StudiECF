@@ -401,22 +401,49 @@ namespace EFCProject.Controllers
         [Authorize(Roles = "Producer")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProd(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game)
+        public async Task<IActionResult> EditProd(int id, [Bind("EndDate,Budget,Statut")] Game updatedGame, string commentaire)
         {
-            if (id != game.Id)
+
+            // Récupérer le jeu existant depuis la base de données
+            var existingGame = await _context.Game.FindAsync(id);
+
+            if (existingGame == null)
             {
                 return NotFound();
             }
+            // Mettre à jour les propriétés spécifiées uniquement
+
+            existingGame.EndDate = updatedGame.EndDate;
+            existingGame.Budget = updatedGame.Budget;
+            existingGame.Statut = updatedGame.Statut;
 
             if (ModelState.IsValid)
             {
-
-                _context.Update(game);
+                // Mettre à jour le jeu existant
+                _context.Update(existingGame);
                 await _context.SaveChangesAsync();
                 
+                if (commentaire != null)
+                {
+                    ModificationLog modif = new ModificationLog();
+                    modif.GameId = existingGame.Id;
+                    modif.Budget = existingGame.Budget;
+                    modif.DateChanged = DateTime.Now;
+                    modif.Commentaire = commentaire;
+
+                    _context.Add(modif);
+                    await _context.SaveChangesAsync();
+                }
+
+                
+
+
                 return RedirectToAction("IndexProd");
             }
-            return View();
+
+
+            // Si le modèle n'est pas valide, retourner à la vue avec le modèle existant
+            return View(existingGame);
         }
 
 

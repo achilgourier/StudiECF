@@ -25,6 +25,10 @@
                     <span asp-validation-for="Budget" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label for="commentaire" class="control-label">Commentaire</label>
+                    <input type="text" id="commentaire" name="commentaire" class="form-control" />
+                </div>
+                <div class="form-group">
                     <label asp-for="Statut" class="control-label"></label>
                     <input asp-for="Statut" list="StatutList" id="Statut" name="Statut" class="form-control" />
                     <datalist id="StatutList">
