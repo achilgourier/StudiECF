@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 
 <!DOCTYPE html>
@@ -44,9 +44,17 @@
                             <li class="nav-item">
                                 <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Admin Page</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="User" asp-action="ListUsers">List Users</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Producer"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="IndexProd">Producteur Page</a>
+                            </li>
                         }
 
-                        
 
 
                     </ul>

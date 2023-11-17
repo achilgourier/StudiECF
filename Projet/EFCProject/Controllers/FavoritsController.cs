@@ -27,8 +27,9 @@ namespace EFCProject.Controllers
 
         }
 
-        // GET: Favorits
-        public async Task<IActionResult> Index()
+		// GET: Favorits
+		[Authorize]
+		public async Task<IActionResult> Index()
         {
               return _context.Favorit != null ? 
                           View(await _context.Favorit.ToListAsync()) :
@@ -66,7 +67,6 @@ namespace EFCProject.Controllers
 
         
         [HttpPost]
-        
         public async Task<IActionResult> AddFav(int gameId)
         {
             Favorit favorit = new Favorit();
@@ -119,7 +119,7 @@ namespace EFCProject.Controllers
             return View("../../Account/Register");
         }
 
-
+		/*
 
         // GET: Favorits/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -212,6 +212,6 @@ namespace EFCProject.Controllers
         private bool FavoritExists(int id)
         {
           return (_context.Favorit?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-    }
+        }*/
+	}
 }

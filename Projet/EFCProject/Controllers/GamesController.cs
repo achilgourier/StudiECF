@@ -38,16 +38,25 @@ namespace EFCProject.Controllers
             _environment = environment;
         }
 
-        // GET: Games
-        
-        public async Task<IActionResult> Index()
+		// GET: Games
+
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Index()
         {
             return _context.Game != null ?
                         View(await _context.Game.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Game'  is nulaaaaaaaaaaaaaaaaaaaaaal.");
+                        Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
-        // GET: Games/ShowSearchForm
-        public async Task<IActionResult> ShowSearchForm(string origine)
+		[Authorize(Roles = "Producer")]
+		public async Task<IActionResult> IndexProd()
+		{
+			return _context.Game != null ?
+						View(await _context.Game.ToListAsync()) :
+						Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+		}
+
+		// GET: Games/ShowSearchForm
+		public async Task<IActionResult> ShowSearchForm(string origine)
         {   
            
             
@@ -64,33 +73,67 @@ namespace EFCProject.Controllers
             }
 
             Type type = typeof(Game);
-
-            // Obtenez les propriétés de l'objet Game
-            PropertyInfo[] properties = type.GetProperties();
-            List<Game> tabGame = await _context.Game.ToListAsync();
-            List<Game> vide = new List<Game>();
-            foreach (Game game in tabGame)
+            if (SearchInput != null)
             {
-                foreach (PropertyInfo property in properties)
+                // Obtenez les propriétés de l'objet Game
+                PropertyInfo[] properties = type.GetProperties();
+                List<Game> tabGame = await _context.Game.ToListAsync();
+                List<Game> vide = new List<Game>();
+                foreach (Game game in tabGame)
                 {
-                    Type propertyType = property.PropertyType;
-                    if (propertyType == typeof(string))
+                    foreach (PropertyInfo property in properties)
                     {
-                        string propertyValue = (string)property.GetValue(game);
-                        if (propertyValue!= null && propertyValue.Contains(SearchInput))
+                        Type propertyType = property.PropertyType;
+                        if (propertyType == typeof(string))
                         {
-                            vide.Add(game);
-                        }
+                            string propertyValue = (string)property.GetValue(game);
+                            if (propertyValue.Contains(SearchInput))
+                            {
+                                vide.Add(game);
+                            }
 
+                        }
                     }
                 }
+                return View(origine, vide);
             }
-            return View(origine, vide);
+            return View(origine, new List<Game>());
+        }
+        public async Task<IActionResult> ShowSearchResultsProd(string SearchInput)
+        {
+
+            Type type = typeof(Game);
+            if (SearchInput != null)
+            {
+                // Obtenez les propriétés de l'objet Game
+                PropertyInfo[] properties = type.GetProperties();
+                List<Game> tabGame = await _context.Game.ToListAsync();
+                List<Game> vide = new List<Game>();
+                foreach (Game game in tabGame)
+                {
+                    foreach (PropertyInfo property in properties)
+                    {
+                        Type propertyType = property.PropertyType;
+                        if (propertyType == typeof(string))
+                        {
+                            string propertyValue = (string)property.GetValue(game);
+                            if (propertyValue.Contains(SearchInput))
+                            {
+                                vide.Add(game);
+                            }
+
+                        }
+                    }
+                }
+                return View("IndexProd", vide);
+            }
+            return View("IndexProd", new List<Game>());
         }
 
 
 
-        public async Task<IActionResult> Displayfav()
+        [Authorize]
+		public async Task<IActionResult> Displayfav()
         {
 
 
@@ -336,6 +379,48 @@ namespace EFCProject.Controllers
             }
             return View("test");
         }
+
+
+
+        [Authorize(Roles = "Producer")]
+        public async Task<IActionResult> EditProd(int? id)
+        {
+            if (id == null || _context.Game == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Game.FindAsync(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
+        }
+        
+        [Authorize(Roles = "Producer")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProd(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game)
+        {
+            if (id != game.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                _context.Update(game);
+                await _context.SaveChangesAsync();
+                
+                return RedirectToAction("IndexProd");
+            }
+            return View();
+        }
+
+
+
 
         // GET: Games/Delete/5
         [Authorize(Roles = "Admin")]

@@ -9,12 +9,11 @@
 <br/>
     <div class="row">
         <div class="col-md-4">
+            <div class="form-group col-md-6">
+                <label for="SearchInput" class="control-label">Chercher Titre</label>
+                <input name="SearchInput" class="form-control" id="searchInput" />
+            </div>
             <form asp-action="ShowSearchResults" class="row">
-                <div class="form-group col-md-6">
-
-                    <label for="SearchInput" class="control-label">Chercher Titre</label>
-                    <input name="SearchInput" class="form-control" id="searchInput" oninput="handleInput(this.value)" />
-                </div>
                 <div class="form-group col-md-6">
                     <label for="SearchInput" class="control-label">Chercher Support ,Status ou Style</label>
                     <input name="SearchInput" class="form-control" />
@@ -66,12 +65,9 @@
                             
                 </div>
                    
-                        
-                            
+                     
                 <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                            
-                                
-                            
+                
             </div>  
                 
     }

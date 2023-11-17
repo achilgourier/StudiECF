@@ -1,6 +1,6 @@
 ﻿@model EFCProject.Models.GameViewModel
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Details";
 }
@@ -16,11 +16,7 @@
                     <button id="remFromFavoritesBtn" class="game-button" type="submit">retiré des fav</button>
 
                     <button id="addToFavoritesBtn" class="game-button" type="submit">Ajouté au fav</button>
-
-
-                
-                
-                
+                    
                 <h4 id="scoreUpdate" class="ml-2">Score : @Html.DisplayFor(model => model.Game.Score)</h4>
             </div>
             <div>

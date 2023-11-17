@@ -120,10 +120,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -176,6 +172,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Administration/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cQ3JlYXRlUm9sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Favorits/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3JpdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -200,8 +200,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Games/EditProd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcRWRpdFByb2QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Games/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Games/IndexProd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcSW5kZXhQcm9kLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Games/Show.cshtml]
@@ -242,6 +250,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/User/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMaXN0VXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/mes doc/bureau/bureau/de/Studi/Projet/StudiECF/Projet/EFCProject/Views/_ViewImports.cshtml]
