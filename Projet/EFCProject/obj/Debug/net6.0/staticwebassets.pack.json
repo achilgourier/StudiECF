@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\Asset\\Images\\Games\\_da92ac9d-0108-404e-94aa-cc58951f45ec.jpg"
     },
     {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\postedFile",
+      "PackagePath": "staticwebassets\\Asset\\Images\\Games"
+    },
+    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\LogoFrenchGame.png",
       "PackagePath": "staticwebassets\\Asset\\Images\\LogoFrenchGame.png"
     },

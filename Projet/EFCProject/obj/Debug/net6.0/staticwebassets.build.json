@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WltMf3T3iK228shaM7JuoB3KhK9ugLIHze0Mb18Xzfw=",
+  "Hash": "1Z/vmGqtha8o1/dx996npfsqJdoZgYcW5X7A8pfiSLk=",
   "Source": "EFCProject",
   "BasePath": "_content/EFCProject",
   "Mode": "Default",
@@ -1375,6 +1375,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\OIG.jpg"
+    },
+    {
+      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\postedFile",
+      "SourceId": "EFCProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
+      "BasePath": "_content/EFCProject",
+      "RelativePath": "Asset/Images/Games/postedFile",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\postedFile"
     },
     {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",

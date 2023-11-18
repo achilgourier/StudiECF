@@ -281,6 +281,7 @@ namespace EFCProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
         {
+            game.Score = 0;
             if (ModelState.IsValid)
             {
                 if (postedFile != null)
@@ -316,6 +317,7 @@ namespace EFCProject.Controllers
             }
 
             var game = await _context.Game.FindAsync(id);
+
             if (game == null)
             {
                 return NotFound();
@@ -323,61 +325,63 @@ namespace EFCProject.Controllers
             return View(game);
         }
 
-        // POST: Games/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
+
+        public async Task<IActionResult> Edit(int id, [Bind("Description,Studio,Support,Size,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
         {
-            if (id != game.Id)
+            var existingGame = await _context.Game.FindAsync(id);
+
+
+            if (existingGame == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
+
 
             if (ModelState.IsValid)
             {
-                try
+                    
+                if (postedFile != null)
                 {
-                    if (postedFile != null)
+                    string path = _environment.WebRootPath + "/Asset/Images/Games/";
+                    if (!Directory.Exists(path))
                     {
-                        string path = _environment.WebRootPath + "/Asset/Images/Games/";
-                        if (!Directory.Exists(path))
-                        {
-                            Directory.CreateDirectory(path);
-                        }
-                        string imagePath = path + game.Image;
-                        // Vérifie si le fichier existe avant de le supprimer
-                        if (System.IO.File.Exists(imagePath))
-                        {
-                            // Supprime le fichier
-                            System.IO.File.Delete(imagePath);
-                        }
-                        using (var stream = new System.IO.FileStream(path + postedFile.Name, System.IO.FileMode.Create))
-                        {
-                            await postedFile.CopyToAsync(stream);
-                        }
-                        game.Image = postedFile.FileName;
+                        Directory.CreateDirectory(path);
+                    }
+                    string imagePath = path + game.Image;
+                    // Vérifie si le fichier existe avant de le supprimer
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        // Supprime le fichier
+                        System.IO.File.Delete(imagePath);
+                        
+                    }
+                    using (var stream = new System.IO.FileStream(path + postedFile.FileName, System.IO.FileMode.Create))
+                    {
+                        await postedFile.CopyToAsync(stream);
                     }
 
-                    _context.Update(game);
-                    await _context.SaveChangesAsync();
+                    existingGame.Description = game.Description;
+                    existingGame.Studio = game.Studio;
+                    existingGame.Type = game.Type;
+                    existingGame.Statut = game.Statut;
+                    existingGame.Budget = game.Budget;
+                    existingGame.EndDate = game.EndDate;
+                    existingGame.CreateDate = game.CreateDate;
+                    existingGame.Engine = game.Engine;
+                    existingGame.Size = game.Size;
+                    existingGame.Support = game.Support;
+                    existingGame.Image = postedFile.FileName;
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!GameExists(game.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                _context.Update(existingGame);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            return View("test");
+            return View(game);
         }
 
 
