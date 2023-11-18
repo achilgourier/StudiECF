@@ -21,14 +21,19 @@ namespace EFCProject.Controllers
         private readonly EFCProject.Data.ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
-		public UserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager ,RoleManager<IdentityRole> roleManager)
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        public UserController(ApplicationDbContext context, 
+								UserManager<ApplicationUser> userManager ,
+								RoleManager<IdentityRole> roleManager ,
+								SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
             _userManager = userManager;
 			_roleManager = roleManager;
+			_signInManager = signInManager;
 
 
-		}
+        }
 
         
 		[HttpGet]
@@ -95,6 +100,31 @@ namespace EFCProject.Controllers
 			await _userManager.AddToRoleAsync(user, roleName);
 
 			return Json(new { success = true, role = roleName });
+		}
+
+
+		public async Task<IActionResult> EditPasword(string userId, string currentPassword, string newPassword)
+		{
+			var user = await _userManager.FindByIdAsync(userId);
+			if (user == null)
+			{
+				return NotFound($"ID introuvable : '{_userManager.GetUserId(User)}'.");
+			}
+			var changePasswordResult = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+			if (changePasswordResult.Succeeded)
+			{
+				await _signInManager.RefreshSignInAsync(user);
+				return View("ListUsers");
+			}
+			else
+			{
+				foreach (var error in changePasswordResult.Errors)
+				{
+					ModelState.AddModelError(string.Empty, error.Description);
+				}
+                return View("ListUsers");
+            }
+			
 		}
 
 

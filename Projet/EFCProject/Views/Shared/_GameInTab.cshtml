@@ -12,31 +12,3 @@
     }
 
 </div>
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    
-    $(document).ready(function () {
-        // Ajoutez un gestionnaire d'événements à chaque bouton
-        $('.game-button').on('click', function () {
-            // Récupérez l'ID du jeu associé au bouton cliqué
-            var gameId = $(this).data('game-id');
-            // Envoyez une requête Ajax pour incrémenter le Score
-            $.ajax({
-                url: '/Games/AddFav', // Remplacez cela par l'URL correcte de votre action
-                type: 'POST',
-                data: { gameId: gameId },
-
-                success: function (response) {
-                    // Faites quelque chose en cas de succès, par exemple, rafraîchissez la page
-                    //location.reload();
-                },
-                error: function (error) {
-                    console.error('Erreur lors de la requête Ajax:', error);
-                }
-            });
-        });
-    });
-</script>

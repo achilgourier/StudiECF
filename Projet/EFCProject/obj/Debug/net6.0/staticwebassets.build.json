@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Jm8pKQxyLh2DKowVpXqgmAi3TtfFDGa2pFoCt5pb1nw=",
+  "Hash": "jAW9jp3SkTgdGONCQUj302PocYxOL1BGAbv2v/D9u90=",
   "Source": "EFCProject",
   "BasePath": "_content/EFCProject",
   "Mode": "Default",
@@ -1222,23 +1222,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\pirate.png"
-    },
-    {
-      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\postedFile",
-      "SourceId": "EFCProject",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
-      "BasePath": "_content/EFCProject",
-      "RelativePath": "Asset/Images/Games/postedFile",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\postedFile"
     },
     {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",

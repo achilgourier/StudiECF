@@ -42,16 +42,22 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Admin Page</a>
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Page Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="User" asp-action="ListUsers">List Users</a>
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="User" asp-action="ListUsers">Liste Users</a>
                             </li>
                         }
                         @if (User.IsInRole("Producer"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="IndexProd">Producteur Page</a>
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="IndexProd">Page Producteur </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("CommManager"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Messages" asp-action="Index">Page CommManager</a>
                             </li>
                         }
 

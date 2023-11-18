@@ -41,10 +41,6 @@
       "PackagePath": "staticwebassets\\Asset\\Images\\Games\\pirate.png"
     },
     {
-      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\postedFile",
-      "PackagePath": "staticwebassets\\Asset\\Images\\Games"
-    },
-    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\LogoFrenchGame.png",
       "PackagePath": "staticwebassets\\Asset\\Images\\LogoFrenchGame.png"
     },

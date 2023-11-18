@@ -118,7 +118,17 @@
 
 <script>
 
+    window.onload = function () {
+        var fullcostHtml = document.getElementById("FullCost");
+        var totalBudget = 0;
+        $(".dataRow").filter(function () {
+                console.log($(this).find('td:eq(4)').text());
+                totalBudget += parseFloat($(this).find('td:eq(4)').text()) || 0;
+        })
 
+        fullcostHtml.innerHTML = 'Total Budget:' + totalBudget;
+        totalBudget = 0;
+    };
 
     $(document).ready(function () {
         // Attacher un gestionnaire d'événement à l'entrée de recherche
@@ -133,18 +143,24 @@
             var searchText = $(this).val().toLowerCase();
 
 
-            $(".dataRow").filter(function () {
-                if ($(this).find('td:eq(0)').text().toLowerCase().includes(searchText)) {
-                    console.log($(this).find('td:eq(4)').text());
-                    totalBudget += parseFloat($(this).find('td:eq(4)').text()) || 0;
 
-                }
-            })
-
-            fullcostHtml.innerHTML = 'Total Budget:' + totalBudget;
-            totalBudget = 0;
             // Vérifier si la longueur de la chaîne est supérieure à 3
             if (searchText.length > 3) {
+
+                $(".dataRow").filter(function () {
+                    if ($(this).find('td:eq(0)').text().toLowerCase().includes(searchText)) {
+                        console.log($(this).find('td:eq(4)').text());
+                        totalBudget += parseFloat($(this).find('td:eq(4)').text()) || 0;
+
+                    }
+                })
+
+                fullcostHtml.innerHTML = 'Total Budget:' + totalBudget;
+                totalBudget = 0;
+
+
+
+
                 // Masquer toutes les lignes du tableau
                 $(".dataRow").hide();
 

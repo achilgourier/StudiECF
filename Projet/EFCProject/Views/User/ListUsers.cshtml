@@ -7,6 +7,8 @@
 	<div class="col-md-10 offset-md-1 contente  mt-3">
 			<h1>ListUsers</h1>
 			
+			<a class="nav-link " asp-area="Identity" asp-page="/Account/Register"><h2>Crée un compt</h2></a>
+			<hr />
 			<a class="nav-link " asp-route-roleTri="User" asp-area="User" asp-page="/ListUsers">User</a>
 			<a class="nav-link " asp-route-roleTri="CommManager" asp-area="User" asp-page="/ListUsers">CommManager</a>
 			<a class="nav-link " asp-route-roleTri="Producer" asp-area="User" asp-page="/ListUsers">Producer</a>
@@ -23,12 +25,29 @@
 			<div class="card mb-3">
 				<div class="card-header">
 					<h5 class="card-title"> @userWiew.User.UserName</h5>
-					<div id="scoreUpdate">
+					<div id="roleUpdate">
 						@foreach (var role in userWiew.Roles)
 						{
 							<h6>@role</h6>
 						}
 					</div>
+					@if (!userWiew.Roles.Contains("User"))
+					{
+					<div>
+						<form asp-action="EditPasword" asp-controller="NomDeVotreController" method="post">
+							<label for="currentPassword">Mot de passe actuel :</label>
+							<input type="password" name="currentPassword" required />
+							
+							<label for="newPassword">Nouveau mot de passe :</label>
+							<input type="password" name="newPassword" required />
+							
+							<input type="hidden" name="userId" value="@userWiew.User.Id" />
+							
+							<button type="submit">Changer le mot de passe</button>
+						</form>
+					</div>
+					}
+	
 				</div>
 				<div class="card-body">
 					<button class="btnAjouterAuRole" data-userId="@userWiew.User.Id" data-role="User">Ajouter à User</button>
@@ -36,7 +55,7 @@
 					<button class="btnAjouterAuRole" data-userId="@userWiew.User.Id" data-role="Producer">Ajouter à Producer</button>
 				</div>
 				<div class="card-foot">
-					aaa
+					
 				</div>
 			</div>
 		}
@@ -72,7 +91,7 @@
 				success: function (result) {
 
 
-					document.getElementById("scoreUpdate").innerText = result.role;
+					document.getElementById("roleUpdate").innerText = result.role;
 					// Gérez le succès ici, par exemple, affichez un message à l'utilisateur
 					alert('Utilisateur ajouté au rôle avec succès!');
 				},

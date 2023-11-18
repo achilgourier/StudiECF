@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Data;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace EFCProject.Areas.Identity.Pages.Account
 {
@@ -30,8 +32,11 @@ namespace EFCProject.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+		private readonly SignInManager<ApplicationUser> SignInManager;
+		private readonly UserManager<ApplicationUser> UserManager;
 
-        public RegisterModel(
+
+		public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
@@ -71,11 +76,16 @@ namespace EFCProject.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
+			/// <summary>
+			///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+			///     directly from your code. This API may change or be removed in future releases.
+			/// </summary>
+			/// 
+			[Required]
+			[Display(Name = "UserName")]
+			public string UserName { get; set; }
+
+			[Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -98,6 +108,10 @@ namespace EFCProject.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            
+            [Display(Name = "Role")]
+            public string Role { get; set; }
         }
 
 
@@ -114,18 +128,27 @@ namespace EFCProject.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+				await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
+				await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-					await _userManager.AddToRoleAsync(user, "User");
-					var userId = await _userManager.GetUserIdAsync(user);
+                    if(Input.Role != null)
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+                    else
+                        await _userManager.AddToRoleAsync(user, "User");
+                    //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var confirmationLink = Url.ActionLink("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+
+                    var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+
+
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
@@ -141,7 +164,8 @@ namespace EFCProject.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+						if (Input.Role == null)
+							await _signInManager.SignInAsync(user, isPersistent: false);                    
                         return LocalRedirect(returnUrl);
                     }
                 }
