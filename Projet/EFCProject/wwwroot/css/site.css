@@ -1,29 +1,28 @@
 /***** Fonts amaranth *****/
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperRegular.ttf') format('ttf');
+    src: url('../Asset/Font/HyperSuperRegular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperRegular3D.ttf') format('ttf');
+    src: url('../Asset/Font/HyperSuperRegular3D.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperItalic3D.ttf') format('ttf');
+    src: url('../Asset/Font/HyperSuperItalic3D.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
 }
 
-
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperItalic.ttf') format('ttf');
+    src: url('../Asset/Font/HyperSuperItalic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
@@ -74,38 +73,39 @@ body {
     font-family: 'HyperSuper';
 
     background-color: #025951;
-    color: black;
+    color: white;
 
 }
 
 .body-backGround {
-    background-image: url('../asset/images/image-background.png');
     background-position: center;
     background-size: cover;
-    
+    background-image: url('../asset/images/image-background.png');
+    color: white;
 }
 h1 {
     font-size: 60px;
-    color: black;
 }
 p {
     font-size: 30px;
-    color: black;
 }
 
 .contente {
-    padding: 50px;
+    padding: 30px;
     background-color: #038C3E;
     border-radius: 10px;
     
 }
 
+img {
+    border-radius: 8px;
+}
 
 /* Style pour la grille */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    gap: 24px;
     
 }
 .image-grid h2 {
@@ -113,7 +113,6 @@ p {
 }
 .image-grid p {
     font-size: 20px;
-
 }
 .image-grid-item:hover {
     transform: scale(1.1); /* Lorsqu'on survole l'élément, augmentez l'échelle à 110% */
@@ -121,17 +120,13 @@ p {
 
 /* Style pour chaque élément de la grille (image) */
 .image-grid-item {
-
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
     /* Style pour chaque image */
 .image-grid-item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
 
     }

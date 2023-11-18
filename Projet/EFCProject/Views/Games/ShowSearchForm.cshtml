@@ -32,15 +32,12 @@
             <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
         </div>
         <div class="form-group col-md-1">
-            <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Description)">  @Html.DisplayNameFor(model => model.Description)</a>
-        </div>
-        <div class="form-group col-md-1">
             <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-sortBy="@Html.DisplayNameFor(model => model.Score)"> @Html.DisplayNameFor(model => model.Score)</a>
         </div>
     </div>
-    
+    <hr />
 </div>
-<hr />
+
 
 <div class="image-grid contente col-md-10 offset-md-1 mt-3">
     @foreach (var item in Model)
@@ -64,10 +61,7 @@
                     </a>
                             
                 </div>
-                   
-                     
-                <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                
+
             </div>  
                 
     }

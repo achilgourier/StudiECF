@@ -27,9 +27,6 @@
                     <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index"  asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
                 </th>
                 <th>
-                    <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Description)">  @Html.DisplayNameFor(model => model.Description)</a>
-                </th>
-                <th>
 
                     <a class="nav-link " asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Studio)"> @Html.DisplayNameFor(model => model.Studio)</a>
                 </th>
@@ -75,9 +72,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+    
             <td>
                 @Html.DisplayFor(modelItem => item.Studio)
             </td>

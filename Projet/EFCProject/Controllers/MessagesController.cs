@@ -55,18 +55,24 @@ namespace EFCProject.Controllers
             return View();
         }
 
-        // POST: Messages/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		public IActionResult Display()
+		{
+			// Récupérer les 5 derniers messages (exemple avec Entity Framework Core)
+			var latestMessages = _context.Message
+				.OrderByDescending(m => m.Date) // Assurez-vous d'ajuster selon votre modèle de données
+				.Take(3)
+				.ToList();
 
+			// Retourner les messages au format JSON
+			return Json(latestMessages);
+		}
 
-        [Authorize(Roles = "CommManager")]
+		[Authorize(Roles = "CommManager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Text,UserName,Date")] Message message)
         {
 
-            message.UserName = User.Identity.Name;
             message.Date = DateTime.Now;
             if (ModelState.IsValid)
             {
@@ -77,31 +83,9 @@ namespace EFCProject.Controllers
             return View(message);
         }
 
-
-        [Authorize(Roles = "CommManager")]
-        // GET: Messages/Delete/5
-        public async Task<IActionResult> Delete(int id)
-        {
-            if (id == null || _context.Message == null)
-            {
-                return NotFound();
-            }
-
-            var message = await _context.Message
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (message == null)
-            {
-                return NotFound();
-            }
-
-            return View(message);
-        }
-
         // POST: Messages/Delete/5
         [Authorize(Roles = "CommManager")]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Message == null)
             {

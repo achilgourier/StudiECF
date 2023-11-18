@@ -107,7 +107,7 @@ namespace EFCProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Favorit", (string)null);
+                    b.ToTable("Favorit");
                 });
 
             modelBuilder.Entity("EFCProject.Models.Game", b =>
@@ -159,13 +159,16 @@ namespace EFCProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game", (string)null);
+                    b.ToTable("Game");
                 });
 
             modelBuilder.Entity("EFCProject.Models.Message", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -180,7 +183,7 @@ namespace EFCProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message", (string)null);
+                    b.ToTable("Message");
                 });
 
             modelBuilder.Entity("EFCProject.Models.ModificationLog", b =>
@@ -206,7 +209,7 @@ namespace EFCProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ModificationLog", (string)null);
+                    b.ToTable("ModificationLog");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

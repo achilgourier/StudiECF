@@ -18,23 +18,21 @@
 			</div>
 		</div>
 	</div>
+
 	
-	<div class="container contente  mt-3">
+	<div class="container contente mt-2">
 		<div class="row p-5">
-			<div class="col-12 p-5">
-				<p class="text-center">ACTUalité</p>
+			<div class="col-12 p-5" id="messages-container">
+				<!-- Les messages seront affichés ici -->
 			</div>
 		</div>
 	</div>
 	
-	<div class="container contente  mt-3">
+	<div class="container contente mt-2">
 		<div class="row p-5">
-			<div class="col-12 p-5">
-				<p class="text-center">List Jeu</p>
-				
+			<div class="col-12 p-5">				
 				<div>
 					@Html.Partial("_GameInTab", Model)
-
 
 				</div>
 			</div>
@@ -45,4 +43,43 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	// Fonction pour récupérer les 5 derniers messages
+	function getLatestMessages() {
+		$.ajax({
+			url: '@Url.Action("Display", "Messages")', // Remplacez par le chemin de votre action dans le contrôleur
+			type: 'GET',
+			dataType: 'json',
+			success: function (data) {				
+				// Effacer le contenu actuel
+				$('#messages-container').empty();
+				// Ajouter les nouveaux messages
+				data.forEach(function (message) {
+					var formattedDate = new Date(message.date).toLocaleString(undefined, {
+						day: 'numeric',
+						month: 'numeric',
+						hour: '2-digit',
+						minute: '2-digit'
+					});
 
+					$('#messages-container').append(
+						'<h2>' + message.userName + '</h2>' +
+						'<p>' + message.text + '</p>' +
+						'<p>' + formattedDate + '</p>' +
+						'<hr />'
+					);
+				});
+			},
+			error: function (error) {
+				console.error('Erreur lors de la récupération des messages :', error);
+			}
+		});
+	}
+
+	// Appeler la fonction toutes les 12 secondes
+	setInterval(getLatestMessages, 12000);
+
+	// Appeler la fonction une fois au chargement de la page
+	getLatestMessages();
+</script>
