@@ -107,11 +107,11 @@ namespace EFCProject.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            /*
             if (!ModelState.IsValid)
             {
                 return Page();
-            }
-            
+            }*/
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
@@ -133,7 +133,7 @@ namespace EFCProject.Areas.Identity.Pages.Account.Manage
             _logger.LogInformation("l'utilisateur a changer son mdp.");
             StatusMessage = "Mot de passe changé ";
 
-            return RedirectToPage();
+            return RedirectToPage("test");
         }
     }
 }

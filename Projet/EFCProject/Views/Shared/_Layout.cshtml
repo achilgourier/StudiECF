@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow">
             <div class="container-fluid mx-2 container mx-auto ">
 
                 <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
@@ -28,16 +28,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav my-3 py-3 mx-2">
-                        <li class="nav-item">
-                            <a class="nav-link" style="color : #038C3E" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-
+                    <ul class="navbar-nav my-3 py-3 mx-2 bordered-lu">
                         <li class="nav-item">
                             <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favorit</a>
+                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favoris</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
@@ -60,26 +56,22 @@
                                 <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Messages" asp-action="Index">Page CommManager</a>
                             </li>
                         }
-
-
-
                     </ul>
-
-
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
+    
     <div class="">
         <main role="main" class="">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted  mt-4">
-        <div class="container">
-            &copy; 2023 - EFCProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="">
+        <div class="container navbar mt-3">
+            2023 - EFCProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -87,4 +79,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

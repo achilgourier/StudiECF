@@ -5,7 +5,7 @@
 }
 
 
-<div class="mt-3">
+<div class="">
 	<div class="container-fluid body-backGround align-items-center p-5">
 		<div class="row p-5 ">
 			<div class="col-12 p-5">
@@ -18,10 +18,9 @@
 			</div>
 		</div>
 	</div>
-
-	
 	<div class="container contente mt-2">
 		<div class="row p-5">
+			
 			<div class="col-12 p-5" id="messages-container">
 				<!-- Les messages seront affichés ici -->
 			</div>
@@ -33,7 +32,6 @@
 			<div class="col-12 p-5">				
 				<div>
 					@Html.Partial("_GameInTab", Model)
-
 				</div>
 			</div>
 		</div>
@@ -64,9 +62,15 @@
 					});
 
 					$('#messages-container').append(
-						'<h2>' + message.userName + '</h2>' +
-						'<p>' + message.text + '</p>' +
-						'<p>' + formattedDate + '</p>' +
+
+						'<div class="row">'+
+							'<div class="col-md-3 contente" >'+
+								'<h2>' + message.userName + '</h2>' + '<p>' + formattedDate + '</p>'+
+							'</div>'+
+							'<div class= "col-md-9 contente" >'+
+								'<p>' + message.text + '</p>' +
+							'</div>'+
+						'</div>'+
 						'<hr />'
 					);
 				});

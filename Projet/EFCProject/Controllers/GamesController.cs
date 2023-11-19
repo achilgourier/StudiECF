@@ -84,10 +84,11 @@ namespace EFCProject.Controllers
                     foreach (PropertyInfo property in properties)
                     {
                         Type propertyType = property.PropertyType;
+
                         if (propertyType == typeof(string))
                         {
                             string propertyValue = (string)property.GetValue(game);
-                            if (propertyValue.Contains(SearchInput))
+                            if (propertyValue != null && propertyValue.Contains(SearchInput))
                             {
                                 vide.Add(game);
                             }
@@ -97,7 +98,8 @@ namespace EFCProject.Controllers
                 }
                 return View(origine, vide);
             }
-            return View(origine, new List<Game>());
+            return View(origine, await _context.Game.ToListAsync());
+
         }
         public async Task<IActionResult> ShowSearchResultsProd(string SearchInput)
         {
@@ -117,7 +119,7 @@ namespace EFCProject.Controllers
                         if (propertyType == typeof(string))
                         {
                             string propertyValue = (string)property.GetValue(game);
-                            if (propertyValue.Contains(SearchInput))
+                            if (propertyValue != null && propertyValue.Contains(SearchInput))
                             {
                                 vide.Add(game);
                             }
@@ -127,7 +129,7 @@ namespace EFCProject.Controllers
                 }
                 return View("IndexProd", vide);
             }
-            return View("IndexProd", new List<Game>());
+            return View("IndexProd", await _context.Game.ToListAsync());
         }
 
 
@@ -209,9 +211,10 @@ namespace EFCProject.Controllers
                 {
 
                     List<Game> tabGame = await _context.Game.ToListAsync();
-                    List<Game> SortedList = tabGame.OrderBy(o => property.GetValue(o, null)).ToList();
-
-                    return View(origine, SortedList);
+                    //List<Game> SortedList = tabGame.OrderBy(o => property.GetValue(o, null)).ToList();
+					List<Game> SortedList = tabGame.OrderByDescending(o => property.GetValue(o, null)).ToList();
+                    
+					return View(origine, SortedList);
   
                 }
             }

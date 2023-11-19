@@ -53,8 +53,6 @@ namespace EFCProject.Controllers
 				users = usersInRole.ToList();
 			}
 
-
-
 			List<UserViewModel> model = new List<UserViewModel>();
 
             foreach (ApplicationUser user in users)
@@ -68,8 +66,6 @@ namespace EFCProject.Controllers
                 };
 
                 model.Add(userViewModel);
-
-
 			}
 			return View(model); 
         }
@@ -114,7 +110,8 @@ namespace EFCProject.Controllers
 			if (changePasswordResult.Succeeded)
 			{
 				await _signInManager.RefreshSignInAsync(user);
-				return View("ListUsers");
+				//return View("ListUsers", _userManager.Users.ToListAsync());
+				return Json(new { success = true, newPassword = newPassword });
 			}
 			else
 			{
@@ -122,9 +119,9 @@ namespace EFCProject.Controllers
 				{
 					ModelState.AddModelError(string.Empty, error.Description);
 				}
-                return View("ListUsers");
+				return Json(new { success = false, newPassword = newPassword });
+				//return View("ListUsers", _userManager.Users.ToListAsync());
             }
-			
 		}
 
 

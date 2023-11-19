@@ -35,13 +35,13 @@ namespace EFCProject.Areas.Identity.Pages.Account
 		private readonly SignInManager<ApplicationUser> SignInManager;
 		private readonly UserManager<ApplicationUser> UserManager;
 
-
+        
 		public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+			IEmailSender emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -129,7 +129,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 				await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
-				await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+				//await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -155,11 +155,12 @@ namespace EFCProject.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirmer votre email",
+                        callbackUrl);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
+
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else

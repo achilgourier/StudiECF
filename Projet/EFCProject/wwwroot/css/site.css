@@ -8,14 +8,14 @@
 
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperRegular3D.ttf') format('truetype');
+    src: url('../Asset/Font/HyperSuperRegular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HyperSuper';
-    src: url('../Asset/Font/HyperSuperItalic3D.ttf') format('truetype');
+    src: url('../Asset/Font/HyperSuperItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
 }
@@ -39,7 +39,7 @@ html {
 }
 footer {
     background-color: #034159;
-   
+
 }
 
 html {
@@ -55,26 +55,14 @@ html {
     border: 4px solid #02735E;
 }
 
-.navbar {
-
+.navbar, .btn {
     background-color: #034159;
     font-size: 30px;
-    
 }
-
-
-.nav-link {
-    color: white;
-}
-
 body {
-
     background-color: #025951;
     font-family: 'HyperSuper';
-
-    background-color: #025951;
     color: white;
-
 }
 
 .body-backGround {
@@ -90,23 +78,41 @@ p {
     font-size: 30px;
 }
 
+.card {
+    color: black;
+}
+.bordered-lu li , .btn-profile {
+    border: 1px solid white;
+    border-radius: 5px; /* Ajoutez une bordure arrondie si vous le souhaitez */
+    margin: 5px;
+    background-color: white;
+}
+.btn-profile {
+    border-radius: 100%;
+}
+a {
+    font-size: 30px;
+    color: white;
+}
+table{
+    color: black;
+}
 .contente {
     padding: 30px;
     background-color: #038C3E;
     border-radius: 10px;
-    
 }
 
 img {
     border-radius: 8px;
 }
 
+
 /* Style pour la grille */
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
     gap: 24px;
-    
 }
 .image-grid h2 {
     font-size: 25px;
@@ -128,5 +134,41 @@ img {
 .image-grid-item img {
     width: 100%;
     height: auto;
-
     }
+
+
+/*Menue Deroulant*/
+
+.LogoutButon {
+    width: 100%;
+    background-color: white;
+}
+
+
+.more {
+    float: left;
+    overflow: hidden;
+}
+.more-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.navbar a:hover, .more:hover .btn, .LogoutButon:hover {
+    background-color: #0CF25D;
+    color: white;
+}
+
+
+
+.dropdown-menu a:hover {
+    background-color: #0CF25D;
+    color: black;
+}
+.more:hover .more-menu {
+    display: block;
+}

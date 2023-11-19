@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1Z/vmGqtha8o1/dx996npfsqJdoZgYcW5X7A8pfiSLk=",
+  "Hash": "tXpwKA/wn2ka5cPgJEVPMLmq36hINoQmqnItkMgdoeU=",
   "Source": "EFCProject",
   "BasePath": "_content/EFCProject",
   "Mode": "Default",
@@ -1377,23 +1377,6 @@
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\OIG.jpg"
     },
     {
-      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\postedFile",
-      "SourceId": "EFCProject",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
-      "BasePath": "_content/EFCProject",
-      "RelativePath": "Asset/Images/Games/postedFile",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\postedFile"
-    },
-    {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",
       "SourceId": "EFCProject",
       "SourceType": "Discovered",
@@ -1426,6 +1409,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\LogoFrenchGame.png"
+    },
+    {
+      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Prologo.png",
+      "SourceId": "EFCProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
+      "BasePath": "_content/EFCProject",
+      "RelativePath": "Asset/Images/Prologo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Prologo.png"
     },
     {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\css\\site.css",

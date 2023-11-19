@@ -40,13 +40,13 @@ namespace EFCProject.Areas.Identity.Pages.Account
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return NotFound($"Imposible de touvé l'id : '{userId}'.");
             }
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
-            return Page();
+			StatusMessage = result.Succeeded ? "Merci pour avoir validé votre mail" : "Erreur de confirmation de votre email.";
+			return Page();
         }
     }
 }

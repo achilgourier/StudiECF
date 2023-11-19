@@ -2,9 +2,10 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav my-3 py-3">
+
 @if (SignInManager.IsSignedIn(User))
 {
+    <!--
     <li class="nav-item">
         <a  class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
@@ -13,15 +14,53 @@
 
                 <button type="submit" class="nav-link btn btn-link LogoutButon" style="color : #038C3E">Logout</button>
         </form>
-    </li>
+        </li>
+    <div class="dropdown">
+        <button class="bloc-top">
+            <span>Modifier</span>
+            <img src="ressources/add.svg">
+        </button>
+        <div class="bloc-links">
+            <ul>
+                <li>
+                    <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                </li>
+                <li>
+                    <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Logout" title="Manage">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="more nav-item">
+        <button class="btn-profile">
+            <img class="img-fluid logo " src="~/Asset/Images/Prologo.png" />
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="more-menu">
+            <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            <form  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link  btn-link LogoutButon" style="color : #038C3E">Logout</button>
+            </form>
+        </div>
+    </div>
+
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+    <ul class="navbar-nav my-3 py-3 bordered-lu">
+        <li class="nav-item">
+            <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link " style="color : #038C3E" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    </ul>
 }
-</ul>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+
+</script>

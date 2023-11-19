@@ -5,13 +5,15 @@
 }
 <div class="mt-3">
 	<div class="col-md-10 offset-md-1 contente  mt-3">
-			<h1>ListUsers</h1>
-			
-			<a class="nav-link " asp-area="Identity" asp-page="/Account/Register"><h2>Crée un compt</h2></a>
+			<h1>List Users</h1>
+
+			<a class="mb-3 " asp-area="Identity" asp-page="/Account/Register"><h2>Crée un compt</h2></a>
 			<hr />
-			<a class="nav-link " asp-route-roleTri="User" asp-area="User" asp-page="/ListUsers">User</a>
-			<a class="nav-link " asp-route-roleTri="CommManager" asp-area="User" asp-page="/ListUsers">CommManager</a>
-			<a class="nav-link " asp-route-roleTri="Producer" asp-area="User" asp-page="/ListUsers">Producer</a>
+			<div>
+				<a  asp-route-roleTri="User" asp-area="User" asp-page="/ListUsers">User</a>
+				<a  asp-route-roleTri="CommManager" asp-area="User" asp-page="/ListUsers">CommManager</a>
+				<a  asp-route-roleTri="Producer" asp-area="User" asp-page="/ListUsers">Producer</a>
+			</div>
 			<hr />
 	</div>
 
@@ -34,16 +36,17 @@
 					@if (!userWiew.Roles.Contains("User"))
 					{
 					<div>
-						<form asp-action="EditPasword" asp-controller="NomDeVotreController" method="post">
+						<form class="changePasswordForm"  method="post">
+							
 							<label for="currentPassword">Mot de passe actuel :</label>
 							<input type="password" name="currentPassword" required />
-							
+
 							<label for="newPassword">Nouveau mot de passe :</label>
 							<input type="password" name="newPassword" required />
 							
 							<input type="hidden" name="userId" value="@userWiew.User.Id" />
-							
-							<button type="submit">Changer le mot de passe</button>
+
+							<button type="button" class="changePasswordButton">Changer le mot de passe</button>
 						</form>
 					</div>
 					}
@@ -102,5 +105,33 @@
 			});
 		});
 	});
+
+	$(document).ready(function () {
+		$('.changePasswordButton').click(function () {
+			// Récupérer le formulaire parent du bouton cliqué
+			var form = $(this).closest('form');
+
+			// Récupérer les valeurs des champs spécifiques à ce formulaire
+			var currentPassword = form.find('input[name="currentPassword"]').val();
+			var newPassword = form.find('input[name="newPassword"]').val();
+			var userId = form.find('input[name="userId"]').val();
+
+			// Effectuer la requête AJAX avec les valeurs spécifiques
+			$.ajax({
+				url: '@Url.Action("EditPasword", "User")',
+				type: 'POST',
+				data: { userId: userId, currentPassword: currentPassword, newPassword: newPassword },
+				success: function (result) {
+					// Gérer la réponse réussie (si nécessaire)
+					alert('Mot de Passe mis a jour !');
+				},
+				error: function (error) {
+					// Gérer les erreurs (si nécessaire)
+					alert('Une erreur est survenue , verifier le mot de passe actuel');
+				}
+			});
+		});
+	});
+	
 </script>
 
