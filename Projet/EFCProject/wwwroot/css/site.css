@@ -58,6 +58,8 @@ html {
 .navbar, .btn {
     background-color: #034159;
     font-size: 30px;
+    color: #038C3E;
+    
 }
 body {
     background-color: #025951;
@@ -158,11 +160,17 @@ img {
     z-index: 1;
 }
 
-.navbar a:hover, .more:hover .btn, .LogoutButon:hover {
+.navbar a {
+    color: #038C3E;
+    text-decoration: none;
+}
+.navbar a:hover, .more:hover .btn, .LogoutButon:hover  ,.navbar-button:hover{
     background-color: #0CF25D;
     color: white;
 }
-
+.logo{
+    background-color:red;
+}
 
 
 .dropdown-menu a:hover {

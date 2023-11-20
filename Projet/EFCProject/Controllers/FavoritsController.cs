@@ -65,8 +65,8 @@ namespace EFCProject.Controllers
             return Json(new { success = false, userId = "non" });
         }
 
-        
-        [HttpPost]
+		[Authorize]
+		[HttpPost]
         public async Task<IActionResult> AddFav(int gameId)
         {
             Favorit favorit = new Favorit();
@@ -94,7 +94,9 @@ namespace EFCProject.Controllers
 		    }
             return View("../Account/Register");
         }
-        [HttpDelete]
+
+		[Authorize]
+		[HttpDelete]
         public async Task<IActionResult> RemFav(int gameId)
         {
 

@@ -29,31 +29,31 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav my-3 py-3 mx-2 bordered-lu">
-                        <li class="nav-item">
-                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
+                        <li class="navbar-button">
+                            <a asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favoris</a>
+                        <li class="navbar-button">
+                            <a  asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favoris</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="Index">Page Admin</a>
+                            <li class="navbar-button">
+                                <a asp-area="" asp-controller="Games" asp-action="Index">Page Admin</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="User" asp-action="ListUsers">Liste Users</a>
+                            <li >
+                                <a  asp-area="" asp-controller="User" asp-action="ListUsers">Liste Users</a>
                             </li>
                         }
                         @if (User.IsInRole("Producer"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Games" asp-action="IndexProd">Page Producteur </a>
+                            <li class="navbar-button">
+                                <a  asp-area="" asp-controller="Games" asp-action="IndexProd">Page Producteur </a>
                             </li>
                         }
                         @if (User.IsInRole("CommManager"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link " style="color : #038C3E" asp-area="" asp-controller="Messages" asp-action="Index">Page CommManager</a>
+                            <li class="navbar-button">
+                                <a  asp-area="" asp-controller="Messages" asp-action="Index">Page CommManager</a>
                             </li>
                         }
                     </ul>
