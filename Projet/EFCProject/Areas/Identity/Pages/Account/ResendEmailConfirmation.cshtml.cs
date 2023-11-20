@@ -65,7 +65,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
-                ModelState.AddModelError(string.Empty, "Verification email sent. Please check your email.");
+                ModelState.AddModelError(string.Empty, "Email de vérification envoyé. Veuillez vérifier votre boîte de réception.");
                 return Page();
             }
 

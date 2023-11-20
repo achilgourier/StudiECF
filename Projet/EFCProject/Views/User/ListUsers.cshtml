@@ -27,13 +27,13 @@
 			<div class="card mb-3">
 				<div class="card-header">
 					<h5 class="card-title"> @userWiew.User.UserName</h5>
-					<div id="roleUpdate">
+					<div id="@($"{userWiew.User.Id}")">
 						@foreach (var role in userWiew.Roles)
 						{
 							<h6>@role</h6>
 						}
 					</div>
-					@if (!userWiew.Roles.Contains("User"))
+						@if (!userWiew.Roles.Contains("User"))
 					{
 					<div>
 						<form class="changePasswordForm"  method="post">
@@ -94,7 +94,9 @@
 				success: function (result) {
 
 
-					document.getElementById("roleUpdate").innerText = result.role;
+					document.getElementById(userId).innerText = result.role;
+
+
 					// Gérez le succès ici, par exemple, affichez un message à l'utilisateur
 					alert('Utilisateur ajouté au rôle avec succès!');
 				},

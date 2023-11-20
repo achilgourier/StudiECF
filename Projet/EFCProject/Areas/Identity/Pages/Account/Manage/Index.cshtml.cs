@@ -112,7 +112,7 @@ namespace EFCProject.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Votre profil a été mis à jour.";
             return RedirectToPage();
         }
     }

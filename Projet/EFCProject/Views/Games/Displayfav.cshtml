@@ -25,14 +25,16 @@
             </form>
         </div>
     </div>
-    
+    <hr />
 </div>
-<hr />
+
 
 <div class="image-grid contente col-md-10 offset-md-1 mt-3">
     @foreach (var item in Model)
     {
-            <div class="dataRow">
+        <div class="list-game">
+        <a class="jeu-grid" href="@Url.Action("Details", "Games", new { id = item.Id })" style="background-image: url('@Url.Content("~/Asset/Images/Games/" + item.Image)')">
+            <div class="game-pres">
                 <div class="row">
                     <div class="col-md-9">
                         <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
@@ -41,18 +43,11 @@
                         <p>@Html.DisplayFor(modelItem => item.Score)</p>
                     </div>
                 </div>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            </div>
+        </a>
+        </div>
 
-                   
-                        
-
-                <div class="image-grid-item">
-                    <a href="@Url.Action("Details", "Games", new { id = item.Id })">
-                        <img src="~/Asset/Images/Games/@item.Image" alt="@item.Image" />
-                    </a>
-                            
-                </div>                  
-                            
-            </div>            
     }
 </div>
 
@@ -71,15 +66,15 @@
             // Vérifier si la longueur de la chaîne est supérieure à 3
             if (searchText.length > 3) {
                 // Masquer toutes les lignes du tableau
-                $(".dataRow").hide();
+                $(".list-game").hide();
 
                 // Afficher uniquement les lignes qui correspondent à la recherche
-                $(".dataRow").filter(function () {
+                $(".list-game").filter(function () {
                     return $(this).text().toLowerCase().includes(searchText);
                 }).show();
             } else {
                 // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
-                $(".dataRow").show();
+                $(".list-game").show();
             }
         });
     });

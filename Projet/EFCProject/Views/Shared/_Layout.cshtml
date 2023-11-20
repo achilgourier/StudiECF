@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="~/EFCProject.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header id ="top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow">
             <div class="container-fluid mx-2 container mx-auto ">
 
-                <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
+                <a id="Logo-contain" class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
                     <img class="logo" src="~/Asset/Images/LogoFrenchGame.png" width="90" height="90" />
                  </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -30,17 +30,17 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav my-3 py-3 mx-2 bordered-lu">
                         <li class="navbar-button">
-                            <a asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Search</a>
+                            <a asp-area="" asp-controller="Games" asp-action="ShowSearchForm">Liste Jeux</a>
                         </li>
                         <li class="navbar-button">
-                            <a  asp-area="" asp-controller="Games" asp-action="Displayfav">Jeux Favoris</a>
+                            <a  asp-area="" asp-controller="Games" asp-action="Displayfav">Favoris</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="navbar-button">
                                 <a asp-area="" asp-controller="Games" asp-action="Index">Page Admin</a>
                             </li>
-                            <li >
+                            <li class="navbar-button">
                                 <a  asp-area="" asp-controller="User" asp-action="ListUsers">Liste Users</a>
                             </li>
                         }
@@ -71,7 +71,7 @@
 
     <footer class="">
         <div class="container navbar mt-3">
-            2023 - EFCProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            2023 - EFCProject - <a href="#top">Remonter</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

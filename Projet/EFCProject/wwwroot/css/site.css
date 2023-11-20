@@ -48,18 +48,27 @@ html {
     min-height: 100%;
 }
 
-.logo {
+.logo ,.profil-logo {
     max-height: 90px;
     max-width: 90px;
     border-radius: 100%;
     border: 4px solid #02735E;
 }
 
+#Logo-contain:hover {
+    background-color: #034159;
+}
+
+.profil-logo:hover {
+    border: 4px solid white;
+    background-color : #0CF25D;
+}
+
+
 .navbar, .btn {
     background-color: #034159;
     font-size: 30px;
     color: #038C3E;
-    
 }
 body {
     background-color: #025951;
@@ -68,10 +77,14 @@ body {
 }
 
 .body-backGround {
+    height:800px ;
     background-position: center;
     background-size: cover;
     background-image: url('../asset/images/image-background.png');
     color: white;
+}
+.body-backGround div{
+    padding-top : 250px;
 }
 h1 {
     font-size: 60px;
@@ -83,13 +96,16 @@ p {
 .card {
     color: black;
 }
-.bordered-lu li , .btn-profile {
+.bordered-lu li , .btn-profile,.game-button {
     border: 1px solid white;
     border-radius: 5px; /* Ajoutez une bordure arrondie si vous le souhaitez */
     margin: 5px;
     background-color: white;
 }
 .btn-profile {
+    
+    background-color: #034159;
+    border: none;
     border-radius: 100%;
 }
 a {
@@ -109,6 +125,23 @@ img {
     border-radius: 8px;
 }
 
+.list-game{
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    gap: 24px;
+}
+.list-game .row{
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0px
+}
+.list-game-image {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+.list-game-image:hover {
+    transform: scale(1.05);
+}
 
 /* Style pour la grille */
 .image-grid {
@@ -122,21 +155,56 @@ img {
 .image-grid p {
     font-size: 20px;
 }
-.image-grid-item:hover {
-    transform: scale(1.1); /* Lorsqu'on survole l'élément, augmentez l'échelle à 110% */
-}
-
-/* Style pour chaque élément de la grille (image) */
-.image-grid-item {
+a.jeu-grid{
+    background-position: center;
+    background-size: cover;
+    text-decoration: none;
+    display: block;
+    max-width: 1024px; /* Taille maximale */
+    width: 100%; /* Taille fixe */
+    height: 500px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-    /* Style pour chaque image */
-.image-grid-item img {
+a.jeu-grid:visited {
+    color: white;
+}
+
+a.jeu-grid:hover {
+    color: white;
+}
+
+a.jeu-grid:hover .game-pres {
+    color: white;
+    display: block;
+    transform: translate(0px, 0%);
+    padding: 10px;
+}
+
+.game-pres, .game-pres-header, .game-pres-content {
     width: 100%;
-    height: auto;
-    }
+    
+ 
+}
+
+.game-pres {
+    
+    height: 100%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, .5);
+    transform: translate(0px, 90%);
+    transition: transform 1s;
+
+
+}
+
+.game-pres-header {
+    height: 20%;
+}
+
+.game-pres-content {
+    height: 80%;
+}
 
 
 /*Menue Deroulant*/
@@ -164,13 +232,15 @@ img {
     color: #038C3E;
     text-decoration: none;
 }
-.navbar a:hover, .more:hover .btn, .LogoutButon:hover  ,.navbar-button:hover{
-    background-color: #0CF25D;
-    color: white;
+.navbar-button {
+    padding: 5px;
 }
-.logo{
-    background-color:red;
-}
+
+    .navbar a:hover, .more:hover .btn, .LogoutButon:hover, .navbar-button:hover, .game-button:hover{
+        background-color: #0CF25D;
+        color: white;
+    }
+
 
 
 .dropdown-menu a:hover {

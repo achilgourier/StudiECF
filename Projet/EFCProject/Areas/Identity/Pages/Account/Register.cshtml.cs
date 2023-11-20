@@ -95,7 +95,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Le champ {0} doit comporter au moins {2} caractères et au maximum {1} caractères.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -106,7 +106,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Le mot de passe et la confirmation du mot de passe ne correspondent pas.")]
             public string ConfirmPassword { get; set; }
 
             
@@ -135,7 +135,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("L'utilisateur a créé un nouveau compte avec un mot de passe.");
                     if(Input.Role != null)
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     else
@@ -148,16 +148,25 @@ namespace EFCProject.Areas.Identity.Pages.Account
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
 
-
-                    var callbackUrl = Url.Page(
+                    try
+                    {
+                        var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirmer votre email",
-                        callbackUrl);
+                        var confirmationLink = "<a href='" + HtmlEncoder.Default.Encode(callbackUrl) + "'>Cliquez ici pour confirmer votre compte</a>";
+                        var messageBody = $"Merci de vous être inscrit sur notre site. Veuillez cliquer sur le lien suivant pour confirmer votre compte : {confirmationLink}";
 
+                        await _emailSender.SendEmailAsync(Input.Email, "Confirmer votre email", messageBody);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex.Message);
+                        
+                    }
+                    
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
 
@@ -198,7 +207,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
         {
             if (!_userManager.SupportsUserEmail)
             {
-                throw new NotSupportedException("The default UI requires a user store with email support.");
+                throw new NotSupportedException("L'interface utilisateur par défaut nécessite un magasin d'utilisateurs prenant en charge les adresses e-mail.");
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }

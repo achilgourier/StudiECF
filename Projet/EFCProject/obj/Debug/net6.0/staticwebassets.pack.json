@@ -29,10 +29,6 @@
       "PackagePath": "staticwebassets\\Asset\\Images\\CarouselImage\\leVole.png"
     },
     {
-      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\OIG.jpg",
-      "PackagePath": "staticwebassets\\Asset\\Images\\Games\\OIG.jpg"
-    },
-    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\_00ec9983-f3fe-4584-b0e7-f6dcf46af632.jpg",
       "PackagePath": "staticwebassets\\Asset\\Images\\Games\\_00ec9983-f3fe-4584-b0e7-f6dcf46af632.jpg"
     },
@@ -77,8 +73,16 @@
       "PackagePath": "staticwebassets\\Asset\\Images\\Games\\_da92ac9d-0108-404e-94aa-cc58951f45ec.jpg"
     },
     {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\sol2.png",
+      "PackagePath": "staticwebassets\\Asset\\Images\\Games\\sol2.png"
+    },
+    {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\LogoFrenchGame.png",
       "PackagePath": "staticwebassets\\Asset\\Images\\LogoFrenchGame.png"
+    },
+    {
+      "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Profil.svg",
+      "PackagePath": "staticwebassets\\Asset\\Images\\Profil.svg"
     },
     {
       "Id": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Prologo.png",

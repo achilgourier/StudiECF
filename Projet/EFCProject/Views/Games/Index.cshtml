@@ -12,12 +12,17 @@
 </p>
     <div class="row">
         <div class="col-md-4">
+
+                <label for="SearchInput" class="control-label">Chercher Titre</label>
+                <input name="SearchInput" class="form-control" id="searchInput" />
+<!--
             <form asp-action="ShowSearchResults" asp-route-origine="Index">
                 <div class="form-group">
                     <label for="SearchTitle"  class="control-label">Cherche Titre</label>
                     <input name="SearchTitle" class="form-control" />
                 </div>
             </form>
+                        -->
         </div>
     </div>
  </div>
@@ -58,6 +63,10 @@
                     <a asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.EndDate)"> @Html.DisplayNameFor(model => model.EndDate)</a>
                 </th>
                 <th>
+
+                    <a asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Budget)"> @Html.DisplayNameFor(model => model.Budget)</a>
+                </th>
+                <th>
                     <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Statut)"> @Html.DisplayNameFor(model => model.Statut)</a>
 
                 </th>
@@ -70,7 +79,8 @@
         </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+
+         <tr class=" tab-game">
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -108,7 +118,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Suprimer</a>
             </td>
         </tr>
 }
@@ -120,3 +130,30 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attacher un gestionnaire d'événement à l'entrée de recherche
+
+        $("#searchInput").on("input", function () {
+            // Obtenir la valeur du champ de recherche
+            var searchText = $(this).val().toLowerCase();
+
+            // Vérifier si la longueur de la chaîne est supérieure à 3
+            if (searchText.length > 3) {
+                // Masquer toutes les lignes du tableau
+                $(".tab-game").hide();
+
+                // Afficher uniquement les lignes qui correspondent à la recherche
+                $(".tab-game").filter(function () {
+                    return $(this).text().toLowerCase().includes(searchText);
+                }).show();
+            } else {
+                // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
+                $(".tab-game").show();
+            }
+        });
+    });
+
+</script>

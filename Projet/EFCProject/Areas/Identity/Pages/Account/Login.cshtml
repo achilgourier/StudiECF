@@ -16,9 +16,9 @@
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating  mb-3">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="peseudo" aria-required="true" />
-                        <label asp-for="Input.Email" style="color:black" ></label>
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        <input asp-for="Input.UserName" class="form-control" autocomplete="pseudo" aria-required="true" />
+                        <label asp-for="Input.UserName" style="color:black" ></label>
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
                     </div>
                     <div class="form-floating  mb-3">
                         <input asp-for="Input.Password" class="form-control" autocomplete="mot de passe" aria-required="true" />
@@ -29,7 +29,7 @@
                         <div class="checkbox  mb-3">
                             <label asp-for="Input.RememberMe" class="form-label">
                                 <input class="form-check-input" asp-for="Input.RememberMe" />
-                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+								Ce rapeller de moi.
                             </label>
                         </div>
                     </div>
