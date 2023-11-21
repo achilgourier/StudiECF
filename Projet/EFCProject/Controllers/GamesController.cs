@@ -21,6 +21,7 @@ using System.Globalization;
 using System.Linq.Expressions;
 using System.Security.Permissions;
 using System.Security.Claims;
+using NuGet.Protocol.Core.Types;
 
 namespace EFCProject.Controllers
 {
@@ -278,11 +279,11 @@ namespace EFCProject.Controllers
         // POST: Games/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Producer")]
         [HttpPost]
         [RequestFormLimits(MultipartBodyLengthLimit = 209715200)]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image")] Game game, IFormFile postedFile)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Studio,Support,Size,Score,Engine,CreateDate,EndDate,Budget,Statut,Type,Image,CreateurName")] Game game, IFormFile postedFile)
         {
             game.Score = 0;
             if (ModelState.IsValid)
@@ -300,6 +301,7 @@ namespace EFCProject.Controllers
                         await postedFile.CopyToAsync(stream);
                     }
                     game.Image = fileName;
+                    game.CreateurName = User.Identity.Name;
                 }
                 
                 _context.Add(game);
@@ -408,24 +410,41 @@ namespace EFCProject.Controllers
         [Authorize(Roles = "Producer")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< Updated upstream
         public async Task<IActionResult> EditProd(int id, [Bind("EndDate,Budget,Statut")] Game updatedGame, string commentaire)
         {
 
             // Récupérer le jeu existant depuis la base de données
             var existingGame = await _context.Game.FindAsync(id);
 
+=======
+        public async Task<IActionResult> EditProd(int id, [Bind("EndDate,Budget,Statut")] Game updatedGame,string commentaire)
+        {
+
+        // Récupérer le jeu existant depuis la base de données
+        var existingGame = await _context.Game.FindAsync(id);
+
+            ModificationLog log = new ModificationLog();
+>>>>>>> Stashed changes
             if (existingGame == null)
             {
                 return NotFound();
             }
             // Mettre à jour les propriétés spécifiées uniquement
+<<<<<<< Updated upstream
 
             existingGame.EndDate = updatedGame.EndDate;
             existingGame.Budget = updatedGame.Budget;
             existingGame.Statut = updatedGame.Statut;
+=======
+>>>>>>> Stashed changes
 
-            if (ModelState.IsValid)
+            existingGame.EndDate = updatedGame.EndDate;
+            existingGame.Budget = updatedGame.Budget;
+            existingGame.Statut = updatedGame.Statut;
+           if (ModelState.IsValid)
             {
+<<<<<<< Updated upstream
                 // Mettre à jour le jeu existant
                 _context.Update(existingGame);
                 await _context.SaveChangesAsync();
@@ -451,13 +470,55 @@ namespace EFCProject.Controllers
 
             // Si le modèle n'est pas valide, retourner à la vue avec le modèle existant
             return View(existingGame);
+=======
+                _context.Update(existingGame);
+                await _context.SaveChangesAsync();
+
+                log.Commentaire = commentaire;
+                log.dateModiff = DateTime.Now;
+                log.GameId = updatedGame.Id;
+                log.Budget = updatedGame.Budget;
+
+                _context.Add(log);
+                await _context.SaveChangesAsync();
+
+
+                // Mettre à jour le jeu existant
+                //return View(existingGame);
+                return RedirectToAction("IndexProd");
+
+            }       
+            // Si le modèle n'est pas valide, retourner à la vue avec le modèle existant
+            return View(existingGame);
+        }
+        [Authorize(Roles = "Producer")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TestRedirect(Game updatedGame)
+        {
+
+            ModificationLog log = new ModificationLog();
+            log.Commentaire = "test";
+            log.dateModiff = DateTime.Now;
+            log.GameId = updatedGame.Id;
+            log.Budget = updatedGame.Budget;
+
+            _context.Add(log);
+            await _context.SaveChangesAsync();
+            
+
+
+
+
+
+
+            return RedirectToAction("IndexProd");
+>>>>>>> Stashed changes
         }
 
 
-
-
-        // GET: Games/Delete/5
-        [Authorize(Roles = "Admin")]
+            // GET: Games/Delete/5
+            [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Game == null)
