@@ -13,18 +13,11 @@ namespace EFCProject.Data
         }
         public DbSet<EFCProject.Models.Game>? Game { get; set; }
         public DbSet<EFCProject.Models.Favorit>? Favorit { get; set; }
-<<<<<<< Updated upstream
         public DbSet<EFCProject.Models.ApplicationUser>? User { get; set; }
         public DbSet<EFCProject.Models.ModificationLog>? ModificationLog { get; set; }
 		public DbSet<EFCProject.Models.Message>? Message { get; set; }
 
 	}
-=======
-        public DbSet<EFCProject.Models.ApplicationUser>? User { get; set; }      
-        public DbSet<EFCProject.Models.ModificationLog>? ModificationLog { get; set; }
-
-    }
->>>>>>> Stashed changes
 }
 
 

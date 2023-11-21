@@ -17,7 +17,5 @@ namespace EFCProject.Areas.Identity
             builder.ConfigureServices((context, services) => {
             });
         }
-
-        
     }
 }

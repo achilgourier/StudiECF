@@ -124,9 +124,6 @@ namespace EFCProject.Data.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CreateurName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -165,7 +162,6 @@ namespace EFCProject.Data.Migrations
                     b.ToTable("Game");
                 });
 
-<<<<<<< Updated upstream
             modelBuilder.Entity("EFCProject.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -190,8 +186,6 @@ namespace EFCProject.Data.Migrations
                     b.ToTable("Message");
                 });
 
-=======
->>>>>>> Stashed changes
             modelBuilder.Entity("EFCProject.Models.ModificationLog", b =>
                 {
                     b.Property<int>("Id")
@@ -200,10 +194,6 @@ namespace EFCProject.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                     b.Property<float>("Budget")
                         .HasColumnType("real");
 
@@ -211,21 +201,12 @@ namespace EFCProject.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< Updated upstream
                     b.Property<DateTime>("DateChanged")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GameId")
                         .HasColumnType("int");
 
-=======
-                    b.Property<int>("GameId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("dateModiff")
-                        .HasColumnType("datetime2");
-
->>>>>>> Stashed changes
                     b.HasKey("Id");
 
                     b.ToTable("ModificationLog");

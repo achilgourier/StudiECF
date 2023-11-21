@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< Updated upstream
   "Hash": "lMoqfcUYL5aNPpDJoUZ0N1JjuQGruQNIOF7xiCe075A=",
-=======
-  "Hash": "PQXhyzyxENGbs50Beo85Z+E4XCC7vAZdEdVinrxYZOQ=",
->>>>>>> Stashed changes
   "Source": "EFCProject",
   "BasePath": "_content/EFCProject",
   "Mode": "Default",
@@ -1379,23 +1375,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\sol2.png"
-    },
-    {
-      "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\Games\\troshh.png",
-      "SourceId": "EFCProject",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\",
-      "BasePath": "_content/EFCProject",
-      "RelativePath": "Asset/Images/Games/troshh.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Asset\\Images\\Games\\troshh.png"
     },
     {
       "Identity": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\wwwroot\\Asset\\Images\\image-backGround.png",

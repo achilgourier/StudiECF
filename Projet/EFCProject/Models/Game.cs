@@ -23,8 +23,6 @@ namespace EFCProject.Models
         public string? Type { get; set; }
         public string? Image { get; set; }
 
-        public string? CreateurName { get; set; }
-
         public Game()
         {
             
