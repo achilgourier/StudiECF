@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EFCProject.Models.Game>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="">
+	<div class="container-fluid body-backGround align-items-center p-5">
+			<div class="">
+				<h1 class="mx-auto text-center">Bienvenue sur FrenchGame</h1>
+			<p class="text-center">FrenchGame est une plateforme dédiée à la découverte de jeux vidéo exceptionnels. Parcourez notre catalogue pour trouver des projets de jeux en cours de développement. Vous avez la possibilité d'explorer ces jeux et de les ajouter à votre liste de favoris pour suivre leur progression passionnante.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container contente mt-4">
+		<div class="row p-3">
+				<h2 class="text-center">Dernier Nouvelle !</h2>
+			<div class="col-12 p-3" id="messages-container">
+				<!-- Les messages seront affichés ici -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="container contente mt-4">
+		<div class="row p-3">
+			<h2 class="text-center">Les jeux !</h2>
+			<div class="col-12 p-3">	
+				
+				<div>
+					@Html.Partial("_GameInTab", Model)
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	// Fonction pour récupérer les 5 derniers messages
+	function getLatestMessages() {
+		$.ajax({
+			url: '@Url.Action("Display", "Messages")', // Remplacez par le chemin de votre action dans le contrôleur
+			type: 'GET',
+			dataType: 'json',
+			success: function (data) {				
+				// Effacer le contenu actuel
+				$('#messages-container').empty();
+				// Ajouter les nouveaux messages
+				data.forEach(function (message) {
+					var formattedDate = new Date(message.date).toLocaleString(undefined, {
+						day: 'numeric',
+						month: 'numeric',
+						hour: '2-digit',
+						minute: '2-digit'
+					});
+
+					$('#messages-container').append(
+
+						'<div class="row">'+
+							'<div class="col-md-3 contente" >'+
+								'<h2>' + message.userName + '</h2>' + '<p>' + formattedDate + '</p>'+
+							'</div>'+
+							'<div class= "col-md-9 contente" >'+
+								'<p>' + message.text + '</p>' +
+							'</div>'+
+						'</div>'+
+						'<hr />'
+					);
+				});
+			},
+			error: function (error) {
+				console.error('Erreur lors de la récupération des messages :', error);
+			}
+		});
+	}
+
+	// Appeler la fonction toutes les 12 secondes
+	setInterval(getLatestMessages, 12000);
+
+	// Appeler la fonction une fois au chargement de la page
+	getLatestMessages();
+</script>

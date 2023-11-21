@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EFCProject.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="mt-3">
+    <div class="col-md-10 offset-md-1 align-content-center contente ">
+
+        <h1>Liste message</h1>
+
+        <p>
+            <a asp-action="Create">Nouveau message</a>
+        </p>
+        <label for="SearchInput" class="control-label">Chercher un message</label>
+        <input name="SearchInput" class="form-control" id="searchInput" />
+    </div>
+    <br/>
+    
+    <div class="col-md-10 offset-md-1 align-content-center contente ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Text)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr class="tab-msg">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Suprimer</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attacher un gestionnaire d'événement à l'entrée de recherche
+
+        $("#searchInput").on("input", function () {
+            // Obtenir la valeur du champ de recherche
+            var searchText = $(this).val().toLowerCase();
+
+            // Vérifier si la longueur de la chaîne est supérieure à 3
+            if (searchText.length > 3) {
+                // Masquer toutes les lignes du tableau
+                $(".tab-msg").hide();
+
+                // Afficher uniquement les lignes qui correspondent à la recherche
+                $(".tab-msg").filter(function () {
+                    return $(this).text().toLowerCase().includes(searchText);
+                }).show();
+            } else {
+                // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
+                $(".tab-msg").show();
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<EFCProject.Models.Game>
+
+    
+<div class="image-grid">
+    @foreach (var game in Model)
+    {      
+        <a class="jeu-grid" href="@Url.Action("Details", "Games", new { id = game.Id })" style="background-image: url('@Url.Content("~/Asset/Images/Games/" + game.Image)')">
+            <div class="game-pres">
+                <h2 class="game-pres-header"><span>@game.Title</span></h2>
+                <p class="game-pres-content">@game.Description</p>
+            </div>
+        </a>
+    }
+</div>
+
+
+

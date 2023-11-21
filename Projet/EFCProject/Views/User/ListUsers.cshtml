@@ -1,0 +1,139 @@
+﻿@model List<UserViewModel>
+
+@{
+	ViewData["Title"] = "ListUsers";
+}
+<div class="mt-3">
+	<div class="col-md-10 offset-md-1 contente  mt-3">
+			<h1>List Users</h1>
+
+			<a class="mb-3 " asp-area="Identity" asp-page="/Account/Register"><h2>Crée un compt</h2></a>
+			<hr />
+			<div>
+				<a  asp-route-roleTri="User" asp-area="User" asp-page="/ListUsers">User</a>
+				<a  asp-route-roleTri="CommManager" asp-area="User" asp-page="/ListUsers">CommManager</a>
+				<a  asp-route-roleTri="Producer" asp-area="User" asp-page="/ListUsers">Producer</a>
+			</div>
+			<hr />
+	</div>
+
+	<div class="col-md-10 offset-md-1 contente  mt-3">
+	@if (Model.Any())
+	{
+		
+
+		foreach (var userWiew in Model)
+		{
+			<div class="card mb-3">
+				<div class="card-header">
+					<h5 class="card-title"> @userWiew.User.UserName</h5>
+					<div id="@($"{userWiew.User.Id}")">
+						@foreach (var role in userWiew.Roles)
+						{
+							<h6>@role</h6>
+						}
+					</div>
+						@if (!userWiew.Roles.Contains("User"))
+					{
+					<div>
+						<form class="changePasswordForm"  method="post">
+							
+							<label for="currentPassword">Mot de passe actuel :</label>
+							<input type="password" name="currentPassword" required />
+
+							<label for="newPassword">Nouveau mot de passe :</label>
+							<input type="password" name="newPassword" required />
+							
+							<input type="hidden" name="userId" value="@userWiew.User.Id" />
+
+							<button type="button" class="changePasswordButton">Changer le mot de passe</button>
+						</form>
+					</div>
+					}
+	
+				</div>
+				<div class="card-body">
+					<button class="btnAjouterAuRole" data-userId="@userWiew.User.Id" data-role="User">Ajouter à User</button>
+					<button class="btnAjouterAuRole" data-userId="@userWiew.User.Id" data-role="CommManager">Ajouter à Community Manager</button>
+					<button class="btnAjouterAuRole" data-userId="@userWiew.User.Id" data-role="Producer">Ajouter à Producer</button>
+				</div>
+				<div class="card-foot">
+					
+				</div>
+			</div>
+		}
+	}
+
+	else{
+		<h1>No User</h1>
+	}
+	</div>
+
+</div>
+
+<!-- Assurez-vous d'inclure jQuery dans votre page avant ce script -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Script JavaScript -->
+<script>
+	$(document).ready(function () {
+		$('.btnAjouterAuRole').on('click', function () {
+			// Remplacez ces valeurs par celles que vous souhaitez utiliser
+			var userId = $(this).data('userid');
+			var roleName = $(this).data('role');
+			
+			console.log(userId);
+			console.log(roleName);
+			
+			console.log('@Url.Action("EditUsersInRole", "User")');
+			// Appel AJAX à votre action dans le contrôleur
+			$.ajax({
+				url: '@Url.Action("EditUsersInRole", "User")',
+				type: 'POST',
+				data: { userId: userId, roleName: roleName },
+				success: function (result) {
+
+
+					document.getElementById(userId).innerText = result.role;
+
+
+					// Gérez le succès ici, par exemple, affichez un message à l'utilisateur
+					alert('Utilisateur ajouté au rôle avec succès!');
+				},
+				error: function () {
+					// Gérez les erreurs ici
+					alert('Une erreur s\'est produite lors de l\'ajout de l\'utilisateur au rôle.');
+				}
+			});
+		});
+	});
+
+	$(document).ready(function () {
+		$('.changePasswordButton').click(function () {
+			// Récupérer le formulaire parent du bouton cliqué
+			var form = $(this).closest('form');
+
+			// Récupérer les valeurs des champs spécifiques à ce formulaire
+			var currentPassword = form.find('input[name="currentPassword"]').val();
+			var newPassword = form.find('input[name="newPassword"]').val();
+			var userId = form.find('input[name="userId"]').val();
+
+			// Effectuer la requête AJAX avec les valeurs spécifiques
+			$.ajax({
+				url: '@Url.Action("EditPasword", "User")',
+				type: 'POST',
+				data: { userId: userId, currentPassword: currentPassword, newPassword: newPassword },
+				success: function (result) {
+					// Gérer la réponse réussie (si nécessaire)
+					alert('Mot de Passe mis a jour !');
+				},
+				error: function (error) {
+					// Gérer les erreurs (si nécessaire)
+					alert('Une erreur est survenue , verifier le mot de passe actuel');
+				}
+			});
+		});
+	});
+	
+</script>
+

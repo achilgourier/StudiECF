@@ -1,0 +1,172 @@
+﻿@model EFCProject.Models.GameViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Details";
+}
+@using Microsoft.AspNetCore.Identity
+
+<div class="mt-3">
+    <div class="col-md-10 offset-md-1 contente  mt-3">
+        <h1>@Html.DisplayFor(model => model.Game.Title)</h1>
+
+        <div>
+            <div class="d-flex justify-content-start">
+  
+
+                    <button id="remFromFavoritesBtn" class="game-button" type="submit">Retiré des fav</button>
+
+                    <button id="addToFavoritesBtn" class="game-button" type="submit">Ajouté au fav</button>
+                    <h4 style="margin-left:15px" id="scoreUpdate" >Score : @Html.DisplayFor(model => model.Game.Score)</h4>
+ 
+            </div>
+            
+                <div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model?.Game.Id">Modifier le jeu</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Index">Retour a la liste</a>
+                }
+                else
+                {
+                    <a asp-action="ShowSearchForm">Retour a la liste</a>
+                }
+                
+                </div>
+            
+            <hr />
+
+        </div>
+    </div>
+
+ 
+    <div class="col-md-10 offset-md-1 contente  mt-3">
+        <div class="row p-5">
+            <div class="form-group col-md-6 text-right ">
+                <h2>à propos de @Html.DisplayFor(model => model.Game.Title) </h2>
+                <br/>
+                <p>@Html.DisplayFor(model => model.Game.Description)</p>
+
+                <hr />
+
+                <p>Studio : @Html.DisplayFor(model => model.Game.Studio)</p>
+
+                <p>Support : @Html.DisplayFor(model => model.Game.Support)</p>
+
+                <p>GameEngine : @Html.DisplayFor(model => model.Game.Engine)</p>
+
+                <p>Statut : @Html.DisplayFor(model => model.Game.Statut)</p>
+
+                <p>Type : @Html.DisplayFor(model => model.Game.Type)</p>
+
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <img src="~/Asset/Images/Games/@Html.DisplayFor(model => model.Game.Image)" alt="ImageJeu" class="img-fluid" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        if (@Model.IsInFavorites == 1) {
+            $("#addToFavoritesBtn").hide();
+
+            // Affichez le bouton "Retirer des favoris"
+            $("#remFromFavoritesBtn").show();
+        }
+        else{
+        $("#addToFavoritesBtn").show();
+
+        // Affichez le bouton "Retirer des favoris"
+        $("#remFromFavoritesBtn").hide();
+        }
+    });
+    
+    $(document).ready(function () {
+        // Gérez le clic sur le bouton
+        $("#addToFavoritesBtn").click(function () {
+            // Obtenez l'ID du jeu à ajouter aux favoris
+            var gameId = @Model.Game.Id;  // Remplacez par l'ID réel du jeu
+
+            // Effectuez l'appel AJAX pour ajouter le jeu aux favoris
+            $.ajax({
+                url: '@Url.Action("AddFav", "Favorits")', // Remplacez "VotreController" par le nom de votre contrôleur
+                type: 'POST',
+                data: { gameId: gameId },
+                success: function (result) {
+                    if (result.success) {
+                        
+                       
+
+                        // Affichez un message de succès si nécessaire
+                        //alert("Le jeu a été ajouté aux favoris.");
+
+                        $("#addToFavoritesBtn").hide();
+
+                        // Affichez le bouton "Retirer des favoris"
+                        $("#remFromFavoritesBtn").show();
+                        document.getElementById("scoreUpdate").innerText = result.score;
+                    } else {
+                        // Affichez un message d'échec si nécessaire
+                        alert(result.message);
+                    }
+                },
+                error: function () {
+                    window.location.href = '../../Identity/Account/Register';//louche
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        // Gérez le clic sur le bouton
+        $("#remFromFavoritesBtn").click(function () {
+            // Obtenez l'ID du jeu à ajouter aux favoris
+            var gameId = @Model.Game.Id;  // Remplacez par l'ID réel du jeu
+
+            // Effectuez l'appel AJAX pour ajouter le jeu aux favoris
+            $.ajax({
+                url: '@Url.Action("RemFav", "Favorits")', // Remplacez "VotreController" par le nom de votre contrôleur
+                type: 'DELETE',
+                data: { gameId: gameId },
+                success: function (result) {
+                    if (result.success) {
+                        alert("Jeu retirer des fav");
+                        $("#addToFavoritesBtn").show();
+
+                        // Affichez le bouton "Retirer des favoris"
+                        $("#remFromFavoritesBtn").hide();
+                        // Affichez un message de succès si nécessaire
+                        document.getElementById("scoreUpdate").innerText = result.score;
+                        
+                    } else {
+                        // Affichez un message d'échec si nécessaire
+                        alert(result.message);
+                    }
+                },
+                error: function () {
+                    alert('Une erreur');
+                }
+            });
+        });
+    });
+
+
+
+
+
+    //verif si deja en fav
+
+   
+
+
+</script>
+

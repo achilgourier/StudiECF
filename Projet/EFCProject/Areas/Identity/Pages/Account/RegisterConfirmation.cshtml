@@ -1,0 +1,26 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Confrimer votre inscription";
+}
+
+
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <div class="col-md-10 offset-md-1 contente  mt-3">
+            <h1>@ViewData["Title"]</h1>
+            <p>
+		        @Model.Email
+                Normalement un mail arrive sur votre boit mail , si ca n'est pas le cas , voila un lien de backup : <a id="confirm-link" href="@Model.EmailConfirmationUrl">confirmer acc</a>
+            </p>
+        </div>
+    }
+    else
+    {
+<p>
+        verifier vos mail
+</p>
+    }
+}
+

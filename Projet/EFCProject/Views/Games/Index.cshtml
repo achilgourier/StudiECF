@@ -1,0 +1,159 @@
+﻿@model IEnumerable<EFCProject.Models.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-md-10 offset-md-1 align-content-center contente ">
+    
+<h1>Liste des Jeux</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+    <div class="row">
+        <div class="col-md-4">
+
+                <label for="SearchInput" class="control-label">Chercher Titre</label>
+                <input name="SearchInput" class="form-control" id="searchInput" />
+<!--
+            <form asp-action="ShowSearchResults" asp-route-origine="Index">
+                <div class="form-group">
+                    <label for="SearchTitle"  class="control-label">Cherche Titre</label>
+                    <input name="SearchTitle" class="form-control" />
+                </div>
+            </form>
+                        -->
+        </div>
+    </div>
+ </div>
+<div class="col-md-10 offset-md-1 align-content-center contente mt-3 ">
+<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index"  asp-route-sortBy="Title"> @Html.DisplayNameFor(model => model.Title)</a>
+                </th>
+                <th>
+
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Studio)"> @Html.DisplayNameFor(model => model.Studio)</a>
+                </th>
+                <th>
+
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Support)"> @Html.DisplayNameFor(model => model.Support)</a>
+                </th>
+                <th>
+
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Size)"> @Html.DisplayNameFor(model => model.Size)</a>
+                </th>
+                <th>
+
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Score)"> @Html.DisplayNameFor(model => model.Score)</a>
+                </th>
+                <th>
+
+
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Engine)"> @Html.DisplayNameFor(model => model.Engine)</a>
+                </th>
+                <th>
+
+                    <a asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.CreateDate)"> @Html.DisplayNameFor(model => model.CreateDate)</a>
+                </th>
+                <th>
+
+                    <a asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.EndDate)"> @Html.DisplayNameFor(model => model.EndDate)</a>
+                </th>
+                <th>
+
+                    <a asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Budget)"> @Html.DisplayNameFor(model => model.Budget)</a>
+                </th>
+                <th>
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy="@Html.DisplayNameFor(model => model.Statut)"> @Html.DisplayNameFor(model => model.Statut)</a>
+
+                </th>
+                <th>
+                    <a  asp-area="" asp-controller="Games" asp-action="DisplayGamesSorted" asp-route-origine="Index" asp-route-sortBy=" @Html.DisplayNameFor(model => model.Type)">  @Html.DisplayNameFor(model => model.Type)</a>
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+         <tr class=" tab-game">
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(modelItem => item.Studio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Support)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Suprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attacher un gestionnaire d'événement à l'entrée de recherche
+
+        $("#searchInput").on("input", function () {
+            // Obtenir la valeur du champ de recherche
+            var searchText = $(this).val().toLowerCase();
+
+            // Vérifier si la longueur de la chaîne est supérieure à 3
+            if (searchText.length > 3) {
+                // Masquer toutes les lignes du tableau
+                $(".tab-game").hide();
+
+                // Afficher uniquement les lignes qui correspondent à la recherche
+                $(".tab-game").filter(function () {
+                    return $(this).text().toLowerCase().includes(searchText);
+                }).show();
+            } else {
+                // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
+                $(".tab-game").show();
+            }
+        });
+    });
+
+</script>

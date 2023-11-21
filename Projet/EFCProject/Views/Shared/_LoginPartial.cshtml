@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <div class="more nav-item">
+        <button class="btn-profile">
+            <img class="img-fluid profil-logo" src="~/Asset/Images/Profil.svg" />
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="more-menu">
+            <a class="navbar-button lien-deplis" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name!</a>
+            <form  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="LogoutButon" >Logout</button>
+            </form>
+        </div>
+    </div>
+
+}
+else
+{
+    <ul class="navbar-nav my-3 py-3 bordered-lu">
+        <li class="navbar-button">
+            <a  asp-area="Identity" asp-page="/Account/Register">Inscription</a>
+        </li>
+        <li class="navbar-button">
+                <a  asp-area="Identity" asp-page="/Account/Login">Connection</a>
+        </li>
+    </ul>
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+
+</script>

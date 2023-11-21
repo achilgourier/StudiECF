@@ -1,0 +1,44 @@
+﻿@model EFCProject.Models.Message
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="col-md-10 offset-md-1 align-content-center contente ">
+    <h1>Créer</h1>
+
+    <h4>Message</h4>
+    <hr />
+    <div class="row">
+
+    
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">Messager</label>
+                    <input asp-for="UserName" class="form-control" value="@User.Identity?.Name" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label">Contenue du message</label>
+                    <textarea asp-for="Text" class="form-control" style="height: 100px; width: 300px;"></textarea>
+
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Retour a la liste</a>
+    </div>
+</div>

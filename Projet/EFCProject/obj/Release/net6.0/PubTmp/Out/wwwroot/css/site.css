@@ -1,0 +1,258 @@
+/***** Fonts amaranth *****/
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperRegular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'HyperSuper';
+    src: url('../Asset/Font/HyperSuperItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+html {
+    font-family: 'HyperSuper';
+    font-size: 30px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+footer {
+    background-color: #034159;
+
+}
+
+html {
+
+    position: relative;
+    min-height: 100%;
+}
+
+.logo ,.profil-logo {
+    max-height: 90px;
+    max-width: 90px;
+    border-radius: 100%;
+    border: 4px solid #02735E;
+}
+
+#Logo-contain:hover {
+    background-color: #034159;
+}
+
+.profil-logo:hover {
+    border: 4px solid white;
+    background-color : #0CF25D;
+}
+
+
+.navbar, .btn {
+    background-color: #034159;
+    font-size: 30px;
+    color: #038C3E;
+}
+body {
+    background-color: #025951;
+    font-family: 'HyperSuper';
+    color: white;
+}
+
+.body-backGround {
+    height:800px ;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../asset/images/image-background.png');
+    color: white;
+}
+.body-backGround div{
+    padding-top : 250px;
+}
+h1 {
+    font-size: 60px;
+}
+p {
+    font-size: 30px;
+}
+
+.card {
+    color: black;
+}
+.bordered-lu li , .btn-profile,.game-button {
+    border: 1px solid white;
+    border-radius: 5px; /* Ajoutez une bordure arrondie si vous le souhaitez */
+    margin: 5px;
+    background-color: white;
+}
+.btn-profile {
+    
+    background-color: #034159;
+    border: none;
+    border-radius: 100%;
+}
+a {
+    font-size: 30px;
+    color: white;
+}
+table{
+    color: black;
+}
+.contente {
+    padding: 30px;
+    background-color: #038C3E;
+    border-radius: 10px;
+}
+
+img {
+    border-radius: 8px;
+}
+
+.list-game{
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    gap: 24px;
+}
+.list-game .row{
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0px
+}
+.list-game-image {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+.list-game-image:hover {
+    transform: scale(1.05);
+}
+
+/* Style pour la grille */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    gap: 24px;
+}
+.image-grid h2 {
+    font-size: 25px;
+}
+.image-grid p {
+    font-size: 20px;
+}
+a.jeu-grid{
+    background-position: center;
+    background-size: cover;
+    text-decoration: none;
+    display: block;
+    max-width: 1024px; /* Taille maximale */
+    width: 100%; /* Taille fixe */
+    height: 500px;
+    overflow: hidden;
+}
+
+a.jeu-grid:visited {
+    color: white;
+}
+
+a.jeu-grid:hover {
+    color: white;
+}
+
+a.jeu-grid:hover .game-pres {
+    color: white;
+    display: block;
+    transform: translate(0px, 0%);
+    padding: 10px;
+}
+
+.game-pres, .game-pres-header, .game-pres-content {
+    width: 100%;
+    
+ 
+}
+
+.lien-deplis {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.game-pres {
+    
+    height: 100%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, .5);
+    transform: translate(0px, 90%);
+    transition: transform 1s;
+
+
+}
+
+.game-pres-header {
+    height: 20%;
+}
+
+.game-pres-content {
+    height: 80%;
+}
+
+
+/*Menue Deroulant*/
+
+.LogoutButon {
+    width: 100%;
+    background-color: white;
+}
+
+
+.more {
+    float: left;
+    overflow: hidden;
+}
+.more-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.navbar a {
+    color: #038C3E;
+    text-decoration: none;
+}
+.navbar-button {
+    padding: 5px;
+}
+
+    .navbar a:hover, .more:hover .btn, .LogoutButon:hover, .navbar-button:hover, .game-button:hover{
+        background-color: #0CF25D;
+        color: white;
+    }
+
+
+
+.dropdown-menu a:hover {
+    background-color: #0CF25D;
+    color: black;
+}
+.more:hover .more-menu {
+    display: block;
+}

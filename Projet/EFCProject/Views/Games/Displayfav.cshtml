@@ -1,0 +1,82 @@
+﻿@model IEnumerable<EFCProject.Models.Game>
+
+
+@{
+    ViewData["Title"] = "ShowSearchForm";
+}
+<div class="col-md-10 offset-md-1 align-content-center contente mt-3 ">
+<h1>Liste des Jeux en favoris</h1>
+<br/>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group col-md-6">
+                <label for="SearchInput" class="control-label">Chercher Titre</label>
+                <input name="SearchInput" class="form-control" id="searchInput" />
+            </div>
+            <form asp-action="ShowSearchResults" class="row">
+                <div class="form-group col-md-6">
+                    <label for="SearchInput" class="control-label">Chercher Support ,Status ou Style</label>
+                    <input name="SearchInput" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="SearchInput" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+</div>
+
+
+<div class="image-grid contente col-md-10 offset-md-1 mt-3">
+    @foreach (var item in Model)
+    {
+        <div class="list-game">
+        <a class="jeu-grid" href="@Url.Action("Details", "Games", new { id = item.Id })" style="background-image: url('@Url.Content("~/Asset/Images/Games/" + item.Image)')">
+            <div class="game-pres">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <p>@Html.DisplayFor(modelItem => item.Score)</p>
+                    </div>
+                </div>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            </div>
+        </a>
+        </div>
+
+    }
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attacher un gestionnaire d'événement à l'entrée de recherche
+
+        $("#searchInput").on("input", function () {
+            // Obtenir la valeur du champ de recherche
+            var searchText = $(this).val().toLowerCase();
+
+            // Vérifier si la longueur de la chaîne est supérieure à 3
+            if (searchText.length > 3) {
+                // Masquer toutes les lignes du tableau
+                $(".list-game").hide();
+
+                // Afficher uniquement les lignes qui correspondent à la recherche
+                $(".list-game").filter(function () {
+                    return $(this).text().toLowerCase().includes(searchText);
+                }).show();
+            } else {
+                // Si la longueur de la chaîne est inférieure ou égale à 3, afficher toutes les lignes
+                $(".list-game").show();
+            }
+        });
+    });
+
+</script>

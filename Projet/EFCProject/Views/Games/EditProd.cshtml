@@ -1,0 +1,62 @@
+﻿@model EFCProject.Models.Game
+
+@{
+    ViewData["Title"] = "EditProd";
+}
+<div class="col-md-6 offset-md-3 align-content-center contente ">
+<h1>Edit</h1>
+<h4>Game</h4>
+<hr />
+<div class="row">
+    <div class="">
+            <h2>@Model.Title</h2>
+            <form asp-action="EditProd" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+                
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Budget" class="control-label"></label>
+                    <input asp-for="Budget" class="form-control" />
+                    <span asp-validation-for="Budget" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="commentaire" class="control-label">Commentaire</label>
+                    <input type="text" id="commentaire" name="commentaire" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Statut" class="control-label"></label>
+                    <input asp-for="Statut" list="StatutList" id="Statut" name="Statut" class="form-control" />
+                    <datalist id="StatutList">
+                        <option value="Prevu"></option>
+                        <option value="A Determiner"></option>
+                        <option value="En Cous"></option>
+                        <option value="Fini"></option>
+                    </datalist>
+                    <span asp-validation-for="Statut" class="text-danger"></span>
+
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <a asp-action="IndexProd">Retour a la liste</a>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
