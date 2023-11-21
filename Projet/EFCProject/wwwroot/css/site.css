@@ -187,6 +187,12 @@ a.jeu-grid:hover .game-pres {
  
 }
 
+.lien-deplis {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
 .game-pres {
     
     height: 100%;
