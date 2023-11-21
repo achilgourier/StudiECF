@@ -1,0 +1,7 @@
+<svg width="60" height="60" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="6" r="5.25" stroke="#038C3E" stroke-width="1.5"/>
+<mask id="path-2-inside-1_453_58" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20 21C20 15.4772 15.5228 11 10 11C4.47715 11 0 15.4772 0 21H20Z"/>
+</mask>
+<path d="M20 21V22.5H21.5V21H20ZM0 21H-1.5V22.5H0V21ZM10 12.5C14.6944 12.5 18.5 16.3056 18.5 21H21.5C21.5 14.6487 16.3513 9.5 10 9.5V12.5ZM1.5 21C1.5 16.3056 5.30558 12.5 10 12.5V9.5C3.64873 9.5 -1.5 14.6487 -1.5 21H1.5ZM0 22.5H20V19.5H0V22.5Z" fill="#038C3E" mask="url(#path-2-inside-1_453_58)"/>
+</svg>

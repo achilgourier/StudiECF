@@ -1,4 +1,5 @@
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\EFCProject.exe
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\web.config
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\appsettings.json
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\EFCProject.dll
@@ -7,6 +8,13 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\MessagePack.Annotations.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.ApplicationInsights.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.ApplicationInsights.AspNetCore.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AI.DependencyCollector.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AI.EventCounterCollector.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AI.PerfCounterCollector.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AI.WindowsServer.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AI.ServerTelemetryChannel.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -34,9 +42,12 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DiagnosticAdapter.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Logging.ApplicationInsights.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.PlatformAbstractions.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -70,6 +81,7 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Composition.TypedParts.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Diagnostics.PerformanceCounter.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Drawing.Common.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
@@ -223,6 +235,7 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
