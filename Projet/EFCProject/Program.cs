@@ -71,18 +71,67 @@ using (var scope = app.Services.CreateScope())
     string email  = "admin@admin";
     string password = "Admin123!";
     if (await userManager.FindByEmailAsync(email) == null)
-    {
-        
+    {   
         var user = new ApplicationUser();
         
         user.UserName = name;
         user.Email = email;
-
         await userManager.CreateAsync(user, password);
-
         await userManager.AddToRoleAsync(user, "Admin");
-         
-    }
+		var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+		await userManager.ConfirmEmailAsync(user, code);
+	}
+	string nameProducteur = "producteur";
+	string emailProducteur = "producteur@producteur.com";
+	string passwordProducteur = "Producteur123!";
+	if (await userManager.FindByEmailAsync(emailProducteur) == null)
+	{
+		var user = new ApplicationUser();
+
+		user.UserName = nameProducteur;
+		user.Email = emailProducteur;
+		await userManager.CreateAsync(user, passwordProducteur);
+		await userManager.AddToRoleAsync(user, "Producer");
+        var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+        await userManager.ConfirmEmailAsync(user, code);
+
+	}
+
+	string nameManager = "manager";
+	string emailManager = "manager@manager.com";
+	string passwordManager = "Manager123!";
+
+	if (await userManager.FindByEmailAsync(emailManager) == null)
+	{
+		var user = new ApplicationUser();
+
+		user.UserName = nameManager;
+		user.Email = emailManager;
+		await userManager.CreateAsync(user, passwordManager);
+		await userManager.AddToRoleAsync(user, "CommManager");
+		var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+		await userManager.ConfirmEmailAsync(user, code);
+	}
+
+	string nameUser = "user";
+	string emailUser = "user@user.com";
+	string passwordUser = "User123!";
+
+	if (await userManager.FindByEmailAsync(emailUser) == null)
+	{
+		var user = new ApplicationUser();
+
+		user.UserName = nameUser;
+		user.Email = emailUser;
+		await userManager.CreateAsync(user, passwordUser);
+		await userManager.AddToRoleAsync(user, "User");
+		var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+		await userManager.ConfirmEmailAsync(user, code);
+	}
+
+
+
+
 }
 
 
