@@ -22,6 +22,11 @@ using Microsoft.Extensions.Logging;
 using System.Data;
 using Microsoft.AspNetCore.Components.Forms;
 
+
+using System.Threading;
+using System.Threading.Tasks;
+
+
 namespace EFCProject.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
@@ -32,16 +37,16 @@ namespace EFCProject.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-		private readonly SignInManager<ApplicationUser> SignInManager;
-		private readonly UserManager<ApplicationUser> UserManager;
+        private readonly SignInManager<ApplicationUser> SignInManager;
+        private readonly UserManager<ApplicationUser> UserManager;
 
-        
-		public RegisterModel(
+
+        public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-			IEmailSender emailSender)
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -76,16 +81,16 @@ namespace EFCProject.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-			/// <summary>
-			///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-			///     directly from your code. This API may change or be removed in future releases.
-			/// </summary>
-			/// 
-			[Required]
-			[Display(Name = "UserName")]
-			public string UserName { get; set; }
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            /// 
+            [Required]
+            [Display(Name = "UserName")]
+            public string UserName { get; set; }
 
-			[Required]
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -109,7 +114,7 @@ namespace EFCProject.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "Le mot de passe et la confirmation du mot de passe ne correspondent pas.")]
             public string ConfirmPassword { get; set; }
 
-            
+
             [Display(Name = "Role")]
             public string Role { get; set; }
         }
@@ -127,24 +132,32 @@ namespace EFCProject.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                var verifUser = await _emailStore.FindByEmailAsync(Input.Email, CancellationToken.None);
+
+
+                if (verifUser != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email déjà utilisé");
+                    return Page();
+                }
                 var user = CreateUser();
-				await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
-				//await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("L'utilisateur a créé un nouveau compte avec un mot de passe.");
-                    if(Input.Role != null)
+
+                    if (Input.Role != null) //ajout du role :
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     else
                         await _userManager.AddToRoleAsync(user, "User");
-                    //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var confirmationLink = Url.ActionLink("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+
 
                     var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);//generation du tokent pour le mail
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
 
@@ -159,14 +172,13 @@ namespace EFCProject.Areas.Identity.Pages.Account
                         var confirmationLink = "<a href='" + HtmlEncoder.Default.Encode(callbackUrl) + "'>Cliquez ici pour confirmer votre compte</a>";
                         var messageBody = $"Merci de vous être inscrit sur notre site. Veuillez cliquer sur le lien suivant pour confirmer votre compte : {confirmationLink}";
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirmer votre email", messageBody);
+                        await _emailSender.SendEmailAsync(Input.Email, "Confirmer votre email", messageBody);//envoie du mail de confiramation (!spam!)
                     }
                     catch (Exception ex)
                     {
                         _logger.LogError(ex.Message);
-                        
                     }
-                    
+
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
 
@@ -174,11 +186,12 @@ namespace EFCProject.Areas.Identity.Pages.Account
                     }
                     else
                     {
-						if (Input.Role == null)
-							await _signInManager.SignInAsync(user, isPersistent: false);                    
+                        if (Input.Role == null)
+                            await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
