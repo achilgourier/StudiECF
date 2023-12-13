@@ -1,5 +1,7 @@
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\EFCProject.exe
-D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\web.config
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\ApplicationInsights.config
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\packages.config
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\Web.config
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\appsettings.json
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\obj\Release\net6.0\PubTmp\Out\EFCProject.dll

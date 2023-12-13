@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj": {}
+    "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj": {}
   },
   "projects": {
-    "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj": {
+    "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
+        "projectUniqueName": "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
         "projectName": "EFCProject",
-        "projectPath": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
+        "projectPath": "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\obj\\",
+        "outputPath": "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

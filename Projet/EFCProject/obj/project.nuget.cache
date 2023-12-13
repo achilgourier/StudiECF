@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6+bJs/giGaDalripv+Br/YjkIDLM9RqRIb907UEgfKaAZGHwBxarl/LQE7JrT/2unV8NjnNHoMCPpTOGRay7Ug==",
+  "dgSpecHash": "PO/ubUF8BAxvNDG6/rrWI4sEjBpd4ZBxqosZzNP3nUhk5FxaqK+8H14IxbIPBCb1qmCtDVi4OzQyEbC49rKVWg==",
   "success": true,
-  "projectFilePath": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
+  "projectFilePath": "D:\\mes doc\\Bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

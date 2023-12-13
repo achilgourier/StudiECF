@@ -271,3 +271,5 @@ D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\net6.0\System.Diagnostics.PerformanceCounter.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\net6.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
 D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\net6.0\web.config
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\net6.0\ApplicationInsights.config
+D:\mes doc\bureau\bureau\de\Studi\Projet\StudiECF\Projet\EFCProject\bin\Release\net6.0\packages.config
