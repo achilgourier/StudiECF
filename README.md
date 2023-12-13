@@ -16,15 +16,15 @@ Migrations de Base de Données
 
 Avant de lancer l'application pour la première fois, assurez-vous de mettre à jour la base de données en exécutant les migrations. Ouvrez une console dans le répertoire de votre projet et exécutez les commandes suivantes :
 
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+    Rendez-vous dans le dossier de l'application : Projet\EFCProject 
+    
+    Ouvrez le projet dans Visual Studio .
+    
+    Dans la console du gestionnaire de package, executez la commande "Update-Database"
+
 
 Ces commandes utiliseront Entity Framework Core pour créer la base de données en fonction de vos modèles.
 Lancement de l'Application
-
-    Ouvrez le projet dans Visual Studio ou utilisez la ligne de commande.
-
-    Assurez-vous d'avoir sélectionné le projet principal comme projet de démarrage.
 
     Appuyez sur F5 ou exécutez dotnet run dans la console.
 
