@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Ce fichier est utilisé par le processus de publication/package de votre projet web. Vous pouvez personnaliser le comportement de ce processus
+en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASmeTW0hSmUuHGu8pDI6iQQAAAAACAAAAAAAQZgAAAAEAACAAAACcLDZpANQviXMqDxNetvfd5ZUwBIZUQCR+iGJFx9XsPwAAAAAOgAAAAAIAACAAAACJ1rB0hQVm4n/6/Hz9u8Jwpmmug5F+Cx7HqypST/yL+4AAAABwJi0/YcyIdzfdSNc9T7xy3fRem1bDy4TR7F8PdDmcPYCZPCzB76dGnFfkmYn0J5ysNU1Q4stGPWgE040ZNNR76Xz3qfgj+sulHncwyOvNuKVLra6Ls9LyQeRv2ezfxQhreNECMH1aJh2zBw3HQyoK0Me0Tf3mjnUN3l2OR9e2mkAAAABikQOJUwF8SF2R/Qb3haZbPXk70SGEauvzGzyouiYRYrVROn99yT6VTIxpnvnbke/1cHKwLx5I+yyCH574a7d0</EncryptedPassword>
+    <History>True|2023-12-13T13:32:13.2514436Z;True|2023-12-13T14:12:26.4069748+01:00;False|2023-12-13T14:11:35.3519849+01:00;False|2023-12-13T14:01:22.4182893+01:00;False|2023-12-13T13:57:07.5289885+01:00;False|2023-12-13T13:55:21.4102926+01:00;False|2023-12-13T13:47:29.2343473+01:00;False|2023-12-13T13:47:12.2145100+01:00;False|2023-12-13T13:45:49.1863757+01:00;True|2023-12-13T13:45:02.4131358+01:00;False|2023-12-13T13:43:39.2885003+01:00;True|2023-12-13T13:43:34.1718847+01:00;False|2023-12-13T13:39:19.7642744+01:00;True|2023-12-13T13:38:51.9300373+01:00;False|2023-12-13T13:37:35.3143968+01:00;True|2023-12-13T13:36:40.8240785+01:00;True|2023-12-13T13:19:58.8376129+01:00;True|2023-12-13T13:14:35.6657712+01:00;True|2023-12-13T13:08:02.4803331+01:00;True|2023-12-13T13:06:31.0860048+01:00;True|2023-12-13T13:04:31.8133550+01:00;True|2023-12-13T13:02:50.6642352+01:00;True|2023-12-13T12:59:47.1914245+01:00;True|2023-12-13T12:58:12.6391258+01:00;True|2023-12-13T11:51:07.2034740+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=aspnet-53bc9b9d-9d6a-45d4-8429-2a2761773502%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="EFCProject.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:efcprojectdbserver2.database.windows.net,1433%3bInitial Catalog=EFCProject_db%3bUser Id=TartOPouair%40efcprojectdbserver2%3bPassword=Ys547L5Cfbr5eM</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

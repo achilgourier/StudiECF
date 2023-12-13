@@ -1,4 +1,6 @@
-﻿namespace EFCProject
+﻿
+/*
+namespace EFCProject
 {
 	public class Startup
 	{
@@ -28,3 +30,4 @@
 
 	}
 }
+*/

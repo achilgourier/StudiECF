@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ql3P8pGMNoYilH4VGDjaz+VQdwWqpwDP267SOjO7/+C51GQZm94KiQQUoXspvzRUxxHw+ku30WsnAM/bCD7ThA==",
+  "dgSpecHash": "enBm2tkf5SSHE9zR/POLEllu+tMZXnRnA47l8nivvhRboeusxp0euyZDLYHDJrM8gIonykRKvDC7VF+aOw4qoA==",
   "success": true,
   "projectFilePath": "D:\\mes doc\\bureau\\bureau\\de\\Studi\\Projet\\StudiECF\\Projet\\EFCProject\\EFCProject.csproj",
   "expectedPackageFiles": [
@@ -291,7 +291,10 @@
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.15\\microsoft.netcore.app.runtime.win-x86.6.0.15.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.15\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.15.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.15\\microsoft.aspnetcore.app.runtime.win-x86.6.0.15.nupkg.sha512"
   ],
   "logs": []
 }

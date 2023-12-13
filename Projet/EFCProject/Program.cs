@@ -27,6 +27,7 @@ builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICAT
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -50,6 +51,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
 
 using (var scope = app.Services.CreateScope())
 {
@@ -133,7 +135,6 @@ using (var scope = app.Services.CreateScope())
 
 
 }
-
 
 
 
