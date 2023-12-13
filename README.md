@@ -12,6 +12,8 @@ Assurez-vous d'avoir installé les éléments suivants avant de lancer l'applica
     Visual Studio (ou tout autre éditeur de texte/code de votre choix)
     ASP.NET 6.0 Core
     .Net 6 :https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+    dotnet-ef version 6.0.7 : (dotnet tool install --global dotnet-ef --version 6.0.7)
+   
 
 Avant de lancer l'application pour la première fois, assurez-vous de mettre à jour la base de données en exécutant les migrations. Ouvrez une console dans le répertoire de votre projet et exécutez les commandes suivantes :
 Migrations de Base de Données
